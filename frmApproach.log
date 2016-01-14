@@ -1,0 +1,12 @@
+74 행: txtTo 컨트롤의 prjNumText.numText 클래스는 로드한 컨트롤 클래스가 아닙니다.
+106 행: txtFrom 컨트롤의 prjNumText.numText 클래스는 로드한 컨트롤 클래스가 아닙니다.
+80 행: txtTo의 _ExtentX 속성 이름이 잘못되었습니다. 
+81 행: txtTo의 _ExtentY 속성 이름이 잘못되었습니다. 
+91 행: txtTo의 FormatMask 속성 이름이 잘못되었습니다. 
+92 행: txtTo의 MaxLength 속성 이름이 잘못되었습니다. 
+104 행: txtTo의 Object.CausesValidation 속성 이름이 잘못되었습니다. 
+112 행: txtFrom의 _ExtentX 속성 이름이 잘못되었습니다. 
+113 행: txtFrom의 _ExtentY 속성 이름이 잘못되었습니다. 
+123 행: txtFrom의 FormatMask 속성 이름이 잘못되었습니다. 
+124 행: txtFrom의 MaxLength 속성 이름이 잘못되었습니다. 
+136 행: txtFrom의 Object.CausesValidation 속성 이름이 잘못되었습니다. 

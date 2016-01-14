@@ -1,0 +1,2 @@
+시도:update tg01 set totalsec=totalsec+204 where GIJUNILJA='20141001' AND userid='박규선' and SUBJ='구약성경' and h=12
+지연사유:select pocketnm ,chasu,code,pcode,xm,chkm,image,selectimage from tp02 where userid='박규선' and hidden=0 order by pcode, create_ymd,code

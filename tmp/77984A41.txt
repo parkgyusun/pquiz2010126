@@ -1,0 +1,2 @@
+시도:update tu01 set con_time='091627',islogon=1 where userid='박규선'
+지연사유:select userid,userpass,con_ymd,con_time,logincnt,islogon,usergrade from tu01 where userid='박규선' and userpass=md5('1111')

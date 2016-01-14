@@ -1,0 +1,2 @@
+시도:select pocketnm ,chasu,code,pcode,xm,chkm,image,selectimage from tp02 where userid='박규선' and hidden=0 order by pcode, create_ymd,code
+지연사유:select chkm, xm from tp02 where pocketnm='복습문제20151130' and chasu=2 and userid='박규선'

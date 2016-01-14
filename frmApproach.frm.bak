@@ -1,0 +1,1202 @@
+VERSION 5.00
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "Msflxgrd.ocx"
+Object = "{65E121D4-0C60-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCHRT20.OCX"
+Begin VB.Form frmApproach 
+   BorderStyle     =   0  '없음
+   ClientHeight    =   6375
+   ClientLeft      =   120
+   ClientTop       =   405
+   ClientWidth     =   12735
+   ControlBox      =   0   'False
+   Icon            =   "frmApproach.frx":0000
+   LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
+   ScaleHeight     =   6375
+   ScaleWidth      =   12735
+   ShowInTaskbar   =   0   'False
+   StartUpPosition =   3  'Windows 기본값
+   Tag             =   "FORM"
+   Begin MSComDlg.CommonDialog dlgChart 
+      Left            =   2250
+      Top             =   1395
+      _ExtentX        =   847
+      _ExtentY        =   847
+      _Version        =   393216
+   End
+   Begin VB.PictureBox picSplitter 
+      BackColor       =   &H00808080&
+      BorderStyle     =   0  '없음
+      FillColor       =   &H00808080&
+      Height          =   4800
+      Left            =   3330
+      ScaleHeight     =   2090.126
+      ScaleMode       =   0  '사용자
+      ScaleWidth      =   780
+      TabIndex        =   18
+      Top             =   1170
+      Visible         =   0   'False
+      Width           =   72
+   End
+   Begin MSChart20Lib.MSChart mchart 
+      Height          =   4830
+      Left            =   2205
+      OleObjectBlob   =   "frmApproach.frx":000C
+      TabIndex        =   1
+      Top             =   1350
+      Width           =   10320
+   End
+   Begin VB.Frame Frame1 
+      Height          =   1185
+      Left            =   90
+      TabIndex        =   2
+      Top             =   90
+      Width           =   12390
+      Begin VB.CheckBox chkUser 
+         Caption         =   "사용자별"
+         Height          =   330
+         Left            =   3015
+         TabIndex        =   22
+         Top             =   675
+         Width           =   1185
+      End
+      Begin POCKETQUIZ.numText txtTo 
+         Height          =   285
+         Left            =   2385
+         TabIndex        =   21
+         Top             =   270
+         Width           =   915
+         _ExtentX        =   1614
+         _ExtentY        =   503
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "굴림"
+            Size            =   9
+            Charset         =   129
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         FormatMask      =   ""
+         FontSize        =   9
+         FontName        =   "굴림"
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1042
+            SubFormatType   =   0
+         EndProperty
+         Object.CausesValidation=   0   'False
+      End
+      Begin POCKETQUIZ.numText txtFrom 
+         Height          =   285
+         Left            =   1035
+         TabIndex        =   20
+         Top             =   270
+         Width           =   915
+         _ExtentX        =   1614
+         _ExtentY        =   503
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "굴림"
+            Size            =   9
+            Charset         =   129
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         FormatMask      =   ""
+         FontSize        =   9
+         FontName        =   "굴림"
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1042
+            SubFormatType   =   0
+         EndProperty
+         Object.CausesValidation=   0   'False
+      End
+      Begin VB.CommandButton cmd1stSeries 
+         Caption         =   "1st Series"
+         Height          =   465
+         Left            =   2160
+         TabIndex        =   19
+         Top             =   630
+         Width           =   735
+      End
+      Begin VB.ComboBox cbo3 
+         Height          =   300
+         Left            =   990
+         Style           =   2  '드롭다운 목록
+         TabIndex        =   16
+         Top             =   720
+         Width           =   1095
+      End
+      Begin VB.CommandButton cmdClose 
+         Cancel          =   -1  'True
+         Caption         =   "닫기"
+         Height          =   375
+         Left            =   11385
+         TabIndex        =   15
+         Top             =   720
+         Width           =   870
+      End
+      Begin VB.CommandButton cmdPrint 
+         Caption         =   "출력"
+         Height          =   375
+         Left            =   10485
+         TabIndex        =   14
+         Top             =   720
+         Width           =   870
+      End
+      Begin VB.ComboBox cbo2 
+         Height          =   300
+         Left            =   9000
+         Style           =   2  '드롭다운 목록
+         TabIndex        =   13
+         Top             =   765
+         Width           =   1455
+      End
+      Begin VB.ComboBox cbo1 
+         Height          =   300
+         ItemData        =   "frmApproach.frx":2359
+         Left            =   9000
+         List            =   "frmApproach.frx":235B
+         Style           =   2  '드롭다운 목록
+         TabIndex        =   12
+         Top             =   360
+         Width           =   1455
+      End
+      Begin VB.ListBox lst2 
+         Height          =   780
+         Left            =   6525
+         MultiSelect     =   2  '확장형
+         TabIndex        =   9
+         Top             =   315
+         Width           =   1455
+      End
+      Begin VB.ListBox lst1 
+         Height          =   780
+         Left            =   4365
+         MultiSelect     =   2  '확장형
+         TabIndex        =   6
+         Top             =   315
+         Width           =   1455
+      End
+      Begin VB.CommandButton cmdSearch 
+         Caption         =   "조회"
+         Default         =   -1  'True
+         Height          =   375
+         Left            =   10485
+         TabIndex        =   4
+         Top             =   315
+         Width           =   1770
+      End
+      Begin VB.Label Label7 
+         Caption         =   "조회간격"
+         Height          =   285
+         Left            =   225
+         TabIndex        =   17
+         Top             =   765
+         Width           =   780
+      End
+      Begin VB.Label Label6 
+         Caption         =   "차트형식"
+         Height          =   195
+         Left            =   8190
+         TabIndex        =   11
+         Top             =   765
+         Width           =   735
+      End
+      Begin VB.Label Label5 
+         Caption         =   "출력항목"
+         Height          =   240
+         Left            =   8190
+         TabIndex        =   10
+         Top             =   405
+         Width           =   825
+      End
+      Begin VB.Label Label4 
+         Caption         =   "과목"
+         Height          =   240
+         Left            =   6075
+         TabIndex        =   8
+         Top             =   360
+         Width           =   420
+      End
+      Begin VB.Label Label3 
+         Caption         =   "사용자"
+         Height          =   240
+         Left            =   3735
+         TabIndex        =   7
+         Top             =   315
+         Width           =   735
+      End
+      Begin VB.Label Label2 
+         Caption         =   "~"
+         Height          =   195
+         Left            =   2115
+         TabIndex        =   5
+         Top             =   315
+         Width           =   150
+      End
+      Begin VB.Label Label1 
+         Caption         =   "조회일자"
+         Height          =   285
+         Left            =   180
+         TabIndex        =   3
+         Top             =   315
+         Width           =   825
+      End
+   End
+   Begin MSFlexGridLib.MSFlexGrid grd 
+      Height          =   4830
+      Left            =   90
+      TabIndex        =   0
+      Top             =   1350
+      Width           =   1905
+      _ExtentX        =   3360
+      _ExtentY        =   8520
+      _Version        =   393216
+      AllowUserResizing=   1
+      Appearance      =   0
+   End
+   Begin VB.Image imgSplitter 
+      Height          =   4785
+      Left            =   2025
+      MousePointer    =   9  'W E 크기 조정
+      Top             =   1350
+      Width           =   150
+   End
+   Begin VB.Menu mnuChart 
+      Caption         =   "챠트"
+      Begin VB.Menu mnuColor 
+         Caption         =   "채우기 색상"
+      End
+      Begin VB.Menu mnuPattern 
+         Caption         =   "패턴 타입"
+         Begin VB.Menu mnuType 
+            Caption         =   "TYPE 0"
+            Index           =   0
+         End
+         Begin VB.Menu mnuType 
+            Caption         =   "TYPE 1"
+            Index           =   1
+         End
+      End
+      Begin VB.Menu mnuP_Color 
+         Caption         =   "패턴 색상"
+      End
+      Begin VB.Menu mnuBar 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mnuForPrint 
+         Caption         =   "출력용 챠트"
+      End
+      Begin VB.Menu mnuForGeneral 
+         Caption         =   "일반 챠트"
+      End
+      Begin VB.Menu mnuBar2 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mnuSavePicture 
+         Caption         =   "그림으로 저장"
+      End
+      Begin VB.Menu mnuFootNote 
+         Caption         =   "노트 보이기"
+      End
+   End
+End
+Attribute VB_Name = "frmApproach"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Base 0
+
+Private conflag As Boolean 'DB가 기존에 연결상태인가?
+Private localrs As ADODB.Recordset
+
+Dim strFootNote As String
+
+Dim lastSelectIDX As Integer
+
+Private mbMoving As Boolean
+Const sglSplitLimit = 50
+
+Private Sub cbo2_Click()
+mchart.chartType = CInt(GETLASTTXT(cbo2.Text, vbTab))
+With mchart
+If mchart.chartType = VtChChartType2dCombination Then
+    For i = 1 To .ColumnCount
+        .Column = i
+        .SeriesColumn = 1
+    Next
+ElseIf mchart.chartType = VtChChartType3dCombination Then
+    For i = 1 To .ColumnCount
+        .Column = i
+        .SeriesColumn = 1
+    Next
+
+Else
+    For i = 1 To .ColumnCount
+        .Column = i
+        .SeriesColumn = i
+    Next
+
+End If
+End With
+
+End Sub
+
+Private Sub cmd1stSeries_Click()
+
+With mchart
+    For i = 1 To .ColumnCount
+        .Column = i
+        .SeriesColumn = 1
+    Next
+End With
+
+End Sub
+
+Private Sub cmdClose_Click()
+Unload Me
+End Sub
+
+Private Sub cmdPrint_Click()
+
+On Error GoTo ErrTrap
+Dim fname As String
+Dim rVal As Integer
+
+rVal = MsgBox("출력용 차트로 변환 후 출력하시겠습니까?", vbYesNoCancel + vbQuestion)
+
+Select Case rVal
+Case vbYes
+    mnuForPrint_Click
+Case vbNo
+    
+Case vbCancel
+    Exit Sub
+End Select
+
+
+mchart.EditCopy
+
+
+GetTempFile "", "~rs", 0, fname
+
+SavePicture Clipboard.GetData, fname
+
+Printer.PaintPicture LoadPicture(fname), 1, 1
+Printer.EndDoc
+
+Kill fname
+
+Exit Sub
+
+ErrTrap:
+Debug.Assert False
+Debug.Print err.Description
+
+End Sub
+
+Private Sub cmdSearch_Click()
+lastSelectIDX = 0
+If Len(txtFrom.Text) <> 8 Then
+    MsgBox "날짜형식(yyyyMMDD) 오류", vbExclamation
+    txtFrom.SetFocus
+    Exit Sub
+End If
+
+If Len(txtTo.Text) <> 8 Then
+    MsgBox "날짜형식(yyyyMMDD) 오류", vbExclamation
+    txtTo.SetFocus
+    Exit Sub
+End If
+
+'If Left(txtFrom.Text, 4) <> Left(txtTo.Text, 4) Then
+'    MsgBox "같은 년도에서만 조회가 가능합니다.", vbExclamation
+'    txtFrom.SetFocus
+'    Exit Sub
+'End If
+
+Select Case cbo3.ListIndex
+Case 0: '일
+    If cbo1.ListIndex = 0 Then
+        sSql = "select gijunilja , subj ,sum(totalsec) from tg01 "
+    ElseIf cbo1.ListIndex = 1 Then
+        sSql = "select gijunilja , subj ,sum(totalsec)/60 from tg01 "
+    ElseIf cbo1.ListIndex = 2 Then
+        sSql = "select gijunilja , subj ,sum(totalsec)/3600 from tg01 "
+    ElseIf cbo1.ListIndex = 3 Then '
+        sSql = "select gijunilja , subj ,sum(next_cnt-backNew_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 4 Then '
+        sSql = "select gijunilja , subj ,sum(o_cnt+x_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 5 Then '
+        sSql = "select gijunilja , subj ,sum(new_cnt-backNew_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 6 Then '
+        sSql = "select gijunilja , subj ,sum(review_cnt-backReview_cnt) from tg01 "
+    End If
+Case 1: '주
+    If cbo1.ListIndex = 0 Then
+        sSql = "select ww , subj ,sum(totalsec) from tg01,yyyy "
+    ElseIf cbo1.ListIndex = 1 Then
+        sSql = "select ww , subj ,sum(totalsec)/60 ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 2 Then
+        sSql = "select ww , subj ,sum(totalsec)/3600  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 3 Then '
+        sSql = "select ww , subj ,sum(next_cnt-backNew_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 4 Then '
+        sSql = "select ww , subj ,sum(o_cnt+x_cnt-backReview_cnt)  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 5 Then '
+        sSql = "select ww , subj ,sum(new_cnt-backNew_cnt)  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 6 Then '
+        sSql = "select ww , subj ,sum(review_cnt-backReview_cnt)  ,yyyy from tg01 "
+    End If
+
+Case 2 'cbo3.AddItem "월"
+    If cbo1.ListIndex = 0 Then
+        sSql = "select m , subj ,sum(totalsec) ,yyyy  from tg01 "
+    ElseIf cbo1.ListIndex = 1 Then
+        sSql = "select m , subj ,sum(totalsec)/60  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 2 Then
+        sSql = "select m , subj ,sum(totalsec)/3600  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 3 Then '
+        sSql = "select m , subj ,sum(next_cnt-backNew_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 4 Then '
+        sSql = "select m , subj ,sum(o_cnt+x_cnt-backReview_cnt) ,yyyy  from tg01 "
+    ElseIf cbo1.ListIndex = 5 Then '
+        sSql = "select m , subj ,sum(new_cnt-backNew_cnt)  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 6 Then '
+        sSql = "select m , subj ,sum(review_cnt-backReview_cnt)  ,yyyy from tg01 "
+    End If
+
+Case 3 'cbo3.AddItem "분기"
+    If cbo1.ListIndex = 0 Then
+        sSql = "select q , subj ,sum(totalsec)  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 1 Then
+        sSql = "select q , subj ,sum(totalsec)/60  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 2 Then
+        sSql = "select q , subj ,sum(totalsec)/3600  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 3 Then '
+        sSql = "select q , subj ,sum(next_cnt-backNew_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 4 Then '
+        sSql = "select q , subj ,sum(o_cnt+x_cnt-backReview_cnt)  ,yyyy from tg01 "
+    ElseIf cbo1.ListIndex = 5 Then '
+        sSql = "select q , subj ,sum(new_cnt-backNew_cnt) ,yyyy  from tg01 "
+    ElseIf cbo1.ListIndex = 6 Then '
+        sSql = "select q , subj ,sum(review_cnt-backReview_cnt)  ,yyyy from tg01 "
+    End If
+
+Case 4 'cbo3.AddItem "년"
+    If cbo1.ListIndex = 0 Then
+        sSql = "select yyyy , subj ,sum(totalsec) from tg01 "
+    ElseIf cbo1.ListIndex = 1 Then
+        sSql = "select yyyy , subj ,sum(totalsec)/60 from tg01 "
+    ElseIf cbo1.ListIndex = 2 Then
+        sSql = "select yyyy , subj ,sum(totalsec)/3600 from tg01 "
+    ElseIf cbo1.ListIndex = 3 Then '
+        sSql = "select yyyy , subj ,sum(next_cnt-backNew_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 4 Then '
+        sSql = "select yyyy , subj ,sum(o_cnt+x_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 5 Then '
+        sSql = "select yyyy , subj ,sum(new_cnt-backNew_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 6 Then '
+        sSql = "select yyyy , subj ,sum(review_cnt-backReview_cnt) from tg01 "
+    End If
+
+Case 5 'cbo3.AddItem "요일별" '1일요일, 7:토요일
+    If cbo1.ListIndex = 0 Then
+        sSql = "select w , subj ,sum(totalsec) from tg01 "
+    ElseIf cbo1.ListIndex = 1 Then
+        sSql = "select w , subj ,sum(totalsec)/60 from tg01 "
+    ElseIf cbo1.ListIndex = 2 Then
+        sSql = "select w , subj ,sum(totalsec)/3600 from tg01 "
+    ElseIf cbo1.ListIndex = 3 Then '
+        sSql = "select w , subj ,sum(next_cnt-backNew_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 4 Then '
+        sSql = "select w , subj ,sum(o_cnt+x_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 5 Then '
+        sSql = "select w , subj ,sum(new_cnt-backNew_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 6 Then '
+        sSql = "select w , subj ,sum(review_cnt-backReview_cnt) from tg01 "
+    End If
+
+Case 6 'cbo3.AddItem "시간대별" '24개로 보여줍니다.
+    If cbo1.ListIndex = 0 Then
+        sSql = "select h , subj ,sum(totalsec) from tg01 "
+    ElseIf cbo1.ListIndex = 1 Then
+        sSql = "select h , subj ,sum(totalsec)/60 from tg01 "
+    ElseIf cbo1.ListIndex = 2 Then
+        sSql = "select h , subj ,sum(totalsec)/3600 from tg01 "
+    ElseIf cbo1.ListIndex = 3 Then '
+        sSql = "select h , subj ,sum(next_cnt-backNew_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 4 Then '
+        sSql = "select h , subj ,sum(o_cnt+x_cnt-backReview_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 5 Then '
+        sSql = "select h , subj ,sum(new_cnt-backNew_cnt) from tg01 "
+    ElseIf cbo1.ListIndex = 6 Then '
+        sSql = "select h , subj ,sum(review_cnt-backReview_cnt) from tg01 "
+    End If
+
+End Select
+
+sSql = sSql & vbCrLf & "where gijunilja between '" & txtFrom.Text & "' and '" & txtTo.Text & "' "
+
+If Not lst1.Selected(0) Then
+    sSql = sSql & vbCrLf & "and userid in (" & selectSeries(lst1) & ")"
+End If
+
+If Not lst2.Selected(0) Then
+    sSql = sSql & vbCrLf & "and SUBJ in (" & selectSeries(lst2) & ")"
+End If
+
+Select Case cbo3.ListIndex
+Case 0 'cbo3.AddItem "일"
+    sSql = sSql & vbCrLf & "group by gijunilja , subj order by gijunilja "
+Case 1 'cbo3.AddItem "주"
+    sSql = sSql & vbCrLf & "group by WW , subj ,yyyy order by yyyy,ww"
+Case 2 'cbo3.AddItem "월"
+    sSql = sSql & vbCrLf & "group by M , subj ,yyyy order by yyyy,m"
+Case 3 '분기
+    sSql = sSql & vbCrLf & "group by Q , subj ,yyyy order by yyyy,q"
+Case 4  '년"
+    sSql = sSql & vbCrLf & "group by YYYY , subj  order by yyyy"
+Case 5 '1일요일, 7:토요일
+    sSql = sSql & vbCrLf & "group by W , subj order by w"
+Case 6 '시간대별" '24개로 보여줍니다.
+    sSql = sSql & vbCrLf & "group by H , subj order by h"
+Case Else
+    Debug.Assert False
+End Select
+
+'Set localrs = New ADODB.Recordset
+
+If chkUser.value = vbChecked Then
+    sSql = Replace(sSql, "subj", "userid")
+End If
+
+Set localrs = Fn_SQLExec(sSql).rs
+
+If SQLCA.Error Then Exit Sub
+
+Call makechart(mchart, localrs)
+
+Set localrs = Nothing
+
+strFootNote = "사용자: " & gUserid & Space(30) & " 기간:" & txtFrom.Text & "~" & txtTo
+
+strFootNote = strFootNote & Space(30) & "조회간격: " & cbo3.Text
+
+
+End Sub
+
+
+Private Sub Form_Load()
+
+If Con.State Then
+    conflag = True
+Else
+    Con_Open
+End If
+
+'모달로 떠있으므로 기존의 연결상태를 유지하거나
+'새로운 연결로 계속 유지함.
+
+    
+    txtFrom.MaxVal = getMaxVal()
+    txtFrom.MinVal = getMinVal()
+    
+    txtTo.MinVal = Left(txtTo.MaxVal, 4) & "0101" '  txtFrom.MinVal
+    txtTo.MaxVal = txtTo.MaxVal
+    
+    txtFrom.Text = txtFrom.MinVal
+    txtTo.Text = txtFrom.MaxVal
+    
+    Call adduser
+    Call Addsubj
+    
+    Call addCHARTType
+    Call addHangmok
+    Call addGankyok
+
+cbo1.ListIndex = 1
+cbo2.ListIndex = 2
+cbo3.ListIndex = 0
+
+For i = 0 To lst1.ListCount - 1
+    If gUserid = lst1.List(i) Then
+        lst1.Selected(i) = True
+    End If
+Next
+
+lst2.Selected(0) = True
+
+cmdSearch_Click
+End Sub
+
+Public Function getMinVal() As Double
+sSql = "select min(gijunilja) from tg01"
+getMinVal = Fn_SQLExec(sSql).rs(0)
+End Function
+
+Public Function getMaxVal() As Double
+sSql = "select max(gijunilja) from tg01"
+getMaxVal = Fn_SQLExec(sSql).rs(0)
+End Function
+
+Public Sub adduser()
+lst1.Clear
+sSql = "select distinct userid from tg01"
+Set localrs = Fn_SQLExec(sSql).rs
+
+
+lst1.AddItem "<전체>"
+Do Until localrs.EOF
+    lst1.AddItem localrs(0)
+    localrs.MoveNext
+Loop
+End Sub
+
+Public Sub Addsubj()
+lst2.Clear
+sSql = "select distinct subj from tg01"
+Set localrs = Fn_SQLExec(sSql).rs
+lst2.AddItem "<전체>"
+Do Until localrs.EOF
+    lst2.AddItem localrs(0)
+    localrs.MoveNext
+Loop
+
+End Sub
+
+Public Sub addCHARTType()
+
+cbo2.Clear
+
+cbo2.AddItem "2dArea" & Space(200) & vbTab & VtChChartType2dArea
+cbo2.AddItem "2dBar" & Space(200) & vbTab & VtChChartType2dBar
+cbo2.AddItem "2dCombination" & Space(200) & vbTab & VtChChartType2dCombination
+cbo2.AddItem "2dLine" & Space(200) & vbTab & VtChChartType2dLine
+cbo2.AddItem "2dPie" & Space(200) & vbTab & VtChChartType2dPie
+cbo2.AddItem "2dStep" & Space(200) & vbTab & VtChChartType2dStep
+cbo2.AddItem "2dXY" & Space(200) & vbTab & VtChChartType2dXY
+cbo2.AddItem "3dArea" & Space(200) & vbTab & VtChChartType3dArea
+cbo2.AddItem "3dBar" & Space(200) & vbTab & VtChChartType3dBar
+cbo2.AddItem "3dCombination" & Space(200) & vbTab & VtChChartType3dCombination
+cbo2.AddItem "3dLine" & Space(200) & vbTab & VtChChartType3dLine
+cbo2.AddItem "3dStep" & Space(200) & vbTab & VtChChartType3dStep
+    
+End Sub
+
+Public Sub addHangmok()
+cbo1.Clear
+cbo1.AddItem "학습시간(초)"
+cbo1.AddItem "학습시간(분)"
+cbo1.AddItem "학습시간(시)"
+
+cbo1.AddItem "학습문항(manual)" 'next-pre
+
+cbo1.AddItem "학습문항(pure)" 'o+x-pre
+
+cbo1.AddItem "새로접한문항" 'new-pre/2
+
+cbo1.AddItem "복습문항" 'pre-pre/2
+
+
+End Sub
+
+
+Private Sub Form_Resize()
+Dim grdHeight As Single
+Dim mchartWidth As Single
+
+Dim margin As Single
+
+margin = 10
+grdHeight = Me.Height - grd.Top - margin
+If grdHeight < 10 Then
+    grd.Height = 10
+    mchart.Height = 10
+Else
+    grd.Height = grdHeight
+    mchart.Height = grdHeight
+    
+End If
+
+mchartWidth = Me.Width - mchart.Left - margin - grd.Left * 2
+
+If mchartWidth < 10 Then
+    mchart.Width = 10
+Else
+    mchart.Width = mchartWidth
+End If
+
+imgSplitter.Height = grd.Height
+   
+    
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+
+If conflag Then
+
+Else
+    Con_Close
+End If
+
+End Sub
+
+Private Sub addGankyok()
+cbo3.Clear
+cbo3.AddItem "일"
+
+cbo3.AddItem "주"
+cbo3.AddItem "월"
+
+cbo3.AddItem "분기"
+
+cbo3.AddItem "년"
+cbo3.AddItem "요일별" '1일요일, 7:토요일
+cbo3.AddItem "시간대별" '24개로 보여줍니다.
+
+End Sub
+
+Private Sub imgSplitter_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    With imgSplitter
+        picSplitter.Move .Left, .Top, .Width \ 2, .Height - 20
+    End With
+    picSplitter.Visible = True
+    mbMoving = True
+    picSplitter.ZOrder 0
+End Sub
+
+
+Private Sub imgSplitter_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Dim sglPos As Single
+    
+
+    If mbMoving Then
+        sglPos = X + imgSplitter.Left
+        If sglPos < sglSplitLimit Then
+            picSplitter.Left = sglSplitLimit
+        ElseIf sglPos > Me.Width - sglSplitLimit Then
+            picSplitter.Left = Me.Width - sglSplitLimit
+        Else
+            picSplitter.Left = sglPos
+        End If
+    End If
+End Sub
+
+
+Private Sub imgSplitter_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    SizeControls picSplitter.Left
+    picSplitter.Visible = False
+    mbMoving = False
+End Sub
+
+Sub SizeControls(X As Single)
+    On Error Resume Next
+
+    '너비를 설정합니다.
+    If X < grd.Left + 30 Then
+        X = grd.Left + 30
+    End If
+    If X > (Me.Width - 1500) Then X = Me.Width - 1500
+    grd.Width = X - grd.Left
+    imgSplitter.Left = X
+    mchart.Left = X + 150
+    mchart.Width = Me.Width - (grd.Left * 2 + 150 + grd.Width)
+    
+    '위쪽을 설정합니다.
+  
+
+'    If tbToolBar.Visible Then
+'        grd.Top = tbToolBar.Height + picTitles.Height
+'    Else
+'        grd.Top = picTitles.Height
+'    End If
+
+  mchart.Top = grd.Top
+    
+
+    '높이를 설정합니다.
+'    If sbStatusBar.Visible Then
+'        grd.Height = Me.ScaleHeight - (picTitles.Top + picTitles.Height + sbStatusBar.Height)
+'    Else
+'        grd.Height = Me.ScaleHeight - (picTitles.Top + picTitles.Height)
+'    End If
+    
+
+    mchart.Height = grd.Height
+    imgSplitter.Top = grd.Top
+    imgSplitter.Height = grd.Height
+    
+
+End Sub
+
+Public Sub makechart(chart As MSChart, rs As ADODB.Recordset)
+Dim row As Long
+Dim col As Long
+Dim maxcol As Long
+Dim maxrow As Long
+
+If Not rs.EOF Then
+maxrow = getMaxRow(rs)
+Dim arr() As Variant
+End If
+Dim vSubj As Variant
+Dim findsubj As Boolean
+
+Dim preRowVal As Variant
+
+
+row = 1
+col = 1
+
+'chart.ChartData
+
+'arr(0)
+'  arr(0,0) empty
+'  arr(0,1) "국어"
+'  arr(0,2) "영어"
+'arr(1)
+'   arr(1,0) "2004-02"
+'   arr(1,1) 1
+'   arr(1,2) 2
+'arr(2)
+'   arr(2,0) "2004-03"
+'   arr(2,1) 3
+'   arr(2,2) 4
+'arr(3)
+'   arr(3,0) "2004-04"
+'   arr(3,1) 5
+'   arr(3,2) 6
+
+maxcol = 0
+
+ReDim Preserve arr(maxrow, maxcol) As Variant
+    
+    
+With chart
+
+If rs.RecordCount > 0 Then
+    rs.MoveFirst
+End If
+
+Do Until rs.EOF
+    preRowVal = rs(0)
+    arr(row, 0) = "　" & rs(0)
+    
+    col = 1
+    
+    findsubj = False
+    For i = 1 To UBound(arr, 2)
+        If arr(0, i) = rs(1) Then
+            findsubj = True
+            arr(row, i) = Format(rs(2), "#0.00")
+            Exit For
+        End If
+    Next
+    
+    If findsubj = False Then
+        maxcol = maxcol + 1
+        ReDim Preserve arr(maxrow, maxcol) As Variant
+        arr(0, maxcol) = rs(1)
+        arr(row, maxcol) = Format(rs(2), "#0.00")
+    End If
+    
+    
+    
+    rs.MoveNext
+    If Not rs.EOF Then
+        If preRowVal <> rs(0) Then
+            row = row + 1
+'            ReDim Preserve arr(maxrow, maxcol) As Variant
+        End If
+    End If
+Loop
+End With
+
+For i = 1 To UBound(arr, 1)
+    For J = 0 To UBound(arr, 2)
+        If IsEmpty(arr(i, J)) Then
+            arr(i, J) = 0
+        End If
+    Next
+Next
+
+If UBound(arr, 1) > 0 Then
+    mchart.ChartData = arr
+    Call arr2grd(arr())
+    mchart.Visible = True
+    grd.Visible = True
+Else
+    MsgBox "조회된 자료가 없습니다.", vbExclamation
+    mchart.Visible = False
+    grd.Visible = False
+End If
+
+'Call setChartColor
+
+End Sub
+
+Private Sub mchart_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+
+    If Button = vbRightButton Then
+    
+        If lastSelectIDX > 0 Then
+           Call mchart.Plot.SeriesCollection.Item(lastSelectIDX).DataPoints(-1).Select
+           mnuColor = True
+           mnuP_Color = True
+           mnuPattern = True
+           
+        Else
+           mnuColor = False
+           mnuP_Color = False
+           mnuPattern = False
+        End If
+    
+    
+        Me.PopupMenu mnuChart
+    End If
+End Sub
+
+Private Sub mchart_PlotSelected(MouseFlags As Integer, Cancel As Integer)
+Debug.Print "plotselected", MouseFlags
+End Sub
+
+Private Sub MChart_SeriesActivated(Series As _
+   Integer, MouseFlags As Integer, Cancel As Integer)
+
+lastSelectIDX = Series
+
+On Error GoTo ErrTrap
+   ' The CommonDialog control is named dlgChart.
+   
+   
+   Dim red, green, blue As Integer
+   With dlgChart ' CommonDialog object
+      .CancelError = True
+      .ShowColor
+      red = RedFromRGB(.Color)
+      green = GreenFromRGB(.Color)
+      blue = BlueFromRGB(.Color)
+   End With
+
+   ' NOTE: Only the 2D and 3D line charts use the
+   ' Pen object. All other types use the Brush.
+
+   If mchart.chartType <> VtChChartType2dLine Or _
+   mchart.chartType <> VtChChartType3dLine Then
+      mchart.Plot.SeriesCollection(Series). _
+         DataPoints(-1).Brush.FillColor. _
+         Set red, green, blue
+   Else
+      mchart.Plot.SeriesCollection(Series).Pen. _
+         VtColor.Set red, green, blue
+   End If
+Exit Sub
+ErrTrap:
+
+End Sub
+
+Public Function RedFromRGB(ByVal rgb As Long) _
+   As Integer
+   ' The ampersand after &HFF coerces the number as a
+   ' long, preventing Visual Basic from evaluating the
+   ' number as a negative value. The logical And is
+   ' used to return bit values.
+   RedFromRGB = &HFF& And rgb
+End Function
+
+Public Function GreenFromRGB(ByVal rgb As Long) _
+   As Integer
+   ' The result of the And operation is divided by
+   ' 256, to return the value of the middle bytes.
+   ' Note the use of the Integer divisor.
+   GreenFromRGB = (&HFF00& And rgb) \ 256
+End Function
+
+Public Function BlueFromRGB(ByVal rgb As Long) _
+   As Integer
+   ' This function works like the GreenFromRGB above,
+   ' except you don't need the ampersand. The
+   ' number is already a long. The result divided by
+   ' 65536 to obtain the highest bytes.
+   BlueFromRGB = (&HFF0000 And rgb) \ 65536
+End Function
+
+Private Function getMaxRow(rs As ADODB.Recordset) As Long
+Dim preVal As Variant
+Dim cnt As Long
+cnt = 1
+
+If Not rs.EOF Then
+    rs.MoveFirst
+End If
+
+Do Until rs.EOF
+    preVal = rs(0)
+    
+    rs.MoveNext
+    If Not rs.EOF Then
+        If rs(0) <> preVal Then
+            cnt = cnt + 1
+        End If
+    End If
+Loop
+    
+    getMaxRow = cnt
+End Function
+
+
+
+Sub arr2grd(arr() As Variant)
+Dim r As Long, c As Long
+
+Dim MaxWid() As Variant
+Dim tmpWid As Single
+
+grd.Clear
+
+c = UBound(arr, 2)
+r = UBound(arr, 1)
+
+ReDim MaxWid(0 To c) As Variant
+
+grd.Rows = r + 1
+grd.Cols = c + 1
+
+For i = 0 To r
+    grd.row = i
+    For J = 0 To c
+        grd.col = J
+        grd.Text = arr(i, J)
+        tmpWid = Me.TextWidth(grd.Text)
+        If tmpWid > MaxWid(J) Then
+            MaxWid(J) = tmpWid
+        End If
+    Next
+
+Next
+
+For J = 0 To c
+
+    grd.ColWidth(J) = MaxWid(J) + Me.TextWidth("가나")
+    grd.row = 0
+    grd.col = J
+    grd.CellAlignment = 3
+Next
+
+End Sub
+
+Public Function selectSeries(lst As ListBox) As String
+
+Dim i As Integer
+Dim nLen As Long
+Dim str As String
+For i = 1 To lst.ListCount - 1
+    If lst.Selected(i) Then
+        str = str & "'" & lst.List(i) & "',"
+    End If
+Next
+
+str = str & "''"
+
+selectSeries = str
+
+End Function
+
+Private Sub mchart_SeriesSelected(Series As Integer, MouseFlags As Integer, Cancel As Integer)
+lastSelectIDX = Series
+End Sub
+
+Private Sub mnuColor_Click()
+    Call MChart_SeriesActivated(lastSelectIDX, vbLeftButton, 0)
+End Sub
+
+Private Sub mnuFootNote_Click()
+mnuFootNote.Checked = Not mnuFootNote.Checked
+If mnuFootNote.Checked = True Then
+    mchart.Footnote.Text = strFootNote
+Else
+    mchart.Footnote.Text = ""
+End If
+End Sub
+
+Private Sub mnuForGeneral_Click()
+Dim serX As Series
+For Each serX In mchart.Plot.SeriesCollection
+    serX.DataPoints(-1).Brush.Style = VtBrushStyleSolid
+Next
+
+End Sub
+
+Private Sub mnuForPrint_Click()
+
+Dim serX As Series
+For Each serX In mchart.Plot.SeriesCollection
+    serX.DataPoints(-1).Brush.Style = VtBrushStyleNull
+Next
+
+
+End Sub
+
+Private Sub mnuP_Color_Click()
+
+lastSelectIDX = Series
+
+On Error GoTo ErrTrap
+   ' The CommonDialog control is named dlgChart.
+   
+   
+   Dim red, green, blue As Integer
+   With dlgChart ' CommonDialog object
+      .CancelError = True
+      .ShowColor
+      red = RedFromRGB(.Color)
+      green = GreenFromRGB(.Color)
+      blue = BlueFromRGB(.Color)
+   End With
+
+   ' NOTE: Only the 2D and 3D line charts use the
+   ' Pen object. All other types use the Brush.
+
+    mchart.Plot.SeriesCollection(Series). _
+       DataPoints(-1).Brush.PatternColor. _
+       Set red, green, blue
+
+Exit Sub
+ErrTrap:
+End Sub
+
+Private Sub mnuSavePicture_Click()
+On Error GoTo ErrTrap
+Dim fname As String
+mchart.EditCopy
+
+dlgChart.CancelError = True
+
+dlgChart.Filter = "bmp파일(.bmp)|*.BMP"
+
+dlgChart.ShowSave
+
+fname = dlgChart.FileName
+
+SavePicture Clipboard.GetData, fname
+
+Exit Sub
+
+ErrTrap:
+
+End Sub

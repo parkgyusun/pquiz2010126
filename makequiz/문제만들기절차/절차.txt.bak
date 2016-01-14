@@ -1,0 +1,45 @@
+1. tq01,tq02.. 등의 이름을 조사한다.
+1.5 백업한다.
+2. 가장 큰 값+1로 해서 테이블 이름을 정하여 생성한다.
+CREATE TABLE `tq12` (
+  `subj` varchar(30) default NULL,
+  `seq` int(11) default NULL,
+  `cat` varchar(20) default NULL,
+  `quiz` mediumtext,
+  `a` mediumtext,
+  `b` mediumtext,
+  `c` mediumtext,
+  `d` mediumtext,
+  `e` mediumtext,
+  `hint` mediumtext,
+  `ans` char(1) default NULL,
+  `resid` varchar(30) default NULL,
+  `mode` char(1) default NULL,
+  `updateymd` varchar(8) default NULL,
+  `updatechasu` int(11) default NULL,
+  UNIQUE KEY `idx_tq12` (`subj`,`seq`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+테이블 이름과 인덱스이름을 시퀀셜하게 하나 증가시킨 후
+mysql을 실행해서 생성하면 되겠다. 
+latin1은 서유럽어케릭터셋이나 올바를 소트가 되려면 필요한 옵션이다.
+
+3. ref.mdb를 열어서 tq12테이블에 데이터를 저장시킨다.
+저장시키기 전 엑셀로 먼저 저장한 후 붙여넣는다.
+그러기 위해 프로그램을 만들던지 일일이 데이터를 붙여 넣든지 한다.
+
+alter table tq12 modify resid varchar(30);
+컬럼사이즈가 모자라는경우는 위와 같이 한다.
+
+4. 결국 tq12 테이블에 모두 데이터를 넣었으면
+다음으로
+5. insert into vq01 select * from tq12; 을 실행하여 마스타로 옮긴다.
+6. 과목 테이블에 ts01 에 해당 정보를 넣는다
+7. 프로파일 정보에 tp01 해장 정보를 넣는다.
+8. 응용프로그램으로 테스트 해본다.
+   만약 tp01에 넣지 않으면 학습계획에는 별 지장이 없지만 , 맞은 수 틀린수 문제 생성에서 오류가 생긴다.
+
+
+
+
+

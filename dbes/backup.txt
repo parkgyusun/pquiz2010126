@@ -1,0 +1,8 @@
+$ mysqldump -u root -p ng00jmlk -A -P80 --default-character-set=latin1>db20050121.db
+ 
+$ mysqldump -P80  --default-character-set=latin1 --database test>test.db
+
+ 
+
+$ mysql -P80<dbfile.db
+mysqldump -uroot -pnextedu --default-character-set=latin1 pocket_znlwm_000001>pocket_znlwm_000001.sql

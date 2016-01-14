@@ -1,0 +1,2 @@
+시도:insert into tg01(GIJUNILJA,yyyy,q,m,y,d,w,ww,h,userid,SUBJ,totalsec) values('20141001',2014,4,10,274,1,4,40,12,'박규선','구약성경',204 )
+지연사유:select pocketnm ,chasu,code,pcode,xm,chkm,image,selectimage from tp02 where userid='박규선' and hidden=0 order by pcode, create_ymd,code

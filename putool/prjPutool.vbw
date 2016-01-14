@@ -1,0 +1,12 @@
+frmMain = 66, 87, 746, 334, Z, 22, 29, 531, 277, C
+mduPutool = 44, 58, 502, 305, 
+clsFTP = 43, 34, 586, 281, 
+basFTP = 51, 65, 648, 312, 
+Cls_zip = 22, 29, 817, 318, 
+Cls_GetFileType = 0, 0, 0, 0, C
+Mod_inflate64 = 0, 0, 0, 0, C
+Cls_CRC32 = 0, 0, 0, 0, C
+Cls_Encrypt = 0, 0, 0, 0, C
+Mod_Declarations = 0, 0, 0, 0, C
+Mod_Reduce = 0, 0, 0, 0, C
+Mod_DiskIO = 0, 0, 0, 0, C

@@ -1,0 +1,2 @@
+시도:SELECT * FROM TP02 WHERE USERID='박규선' AND CODE=1322
+지연사유:select lastnew,hangsu,od from tu03 where userid='박규선' and POCKETNM='☆ 특목고입시용' AND CHASU=1

@@ -4,6 +4,11 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
+/cache/
+/Package_sample1/
+/Package_sample2/
+/OEM/
+/Package20121224/
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/

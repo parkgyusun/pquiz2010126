@@ -1,0 +1,2 @@
+시도:update tu01 set islogon=0 where userid='영어' and con_time='091312' 
+지연사유:update tu01 set islogon=1 where userid='영어' and con_time='091312'

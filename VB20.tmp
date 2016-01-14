@@ -1,0 +1,190 @@
+VERSION 1.0 CLASS
+BEGIN
+  MultiUse = -1  'True
+  Persistable = 0  'NotPersistable
+  DataBindingBehavior = 0  'vbNone
+  DataSourceBehavior  = 0  'vbNone
+  MTSTransactionMode  = 0  'NotAnMTSObject
+END
+Attribute VB_Name = "clsTg01"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = False
+Attribute VB_Ext_KEY = "SavedWithClassBuilder6" ,"Yes"
+Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
+'속성값을 가질 지역 변수
+Private mvargijunilja As String '지역 복사
+Private mvaruserid As String '지역 복사
+Private mvarsubj As String '지역 복사
+Private mvartotalsec As Long '지역 복사
+Private mvarnew_cnt As Long '지역 복사
+Private mvarreview_cnt As Long '지역 복사
+Private mvaro_cnt As Long '지역 복사
+Private mvarx_cnt As Long '지역 복사
+Private mvarchk_cnt As Long '지역 복사
+Private mvarback_cnt As Long '지역 복사
+Private mvarnext_cnt As Long '지역 복사
+Public Property Let next_cnt(ByVal vData As Long)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.next_cnt = 5
+    mvarnext_cnt = vData
+End Property
+
+
+Public Property Get next_cnt() As Long
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.next_cnt
+    next_cnt = mvarnext_cnt
+End Property
+
+
+
+Public Property Let back_cnt(ByVal vData As Long)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.back_cnt = 5
+    mvarback_cnt = vData
+End Property
+
+
+Public Property Get back_cnt() As Long
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.back_cnt
+    back_cnt = mvarback_cnt
+End Property
+
+
+
+Public Property Let chk_cnt(ByVal vData As Long)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.chk_cnt = 5
+    mvarchk_cnt = vData
+End Property
+
+
+Public Property Get chk_cnt() As Long
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.chk_cnt
+    chk_cnt = mvarchk_cnt
+End Property
+
+
+
+Public Property Let x_cnt(ByVal vData As Long)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.x_cnt = 5
+    mvarx_cnt = vData
+End Property
+
+
+Public Property Get x_cnt() As Long
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.x_cnt
+    x_cnt = mvarx_cnt
+End Property
+
+
+
+Public Property Let o_cnt(ByVal vData As Long)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.o_cnt = 5
+    mvaro_cnt = vData
+End Property
+
+
+Public Property Get o_cnt() As Long
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.o_cnt
+    o_cnt = mvaro_cnt
+End Property
+
+
+
+Public Property Let review_cnt(ByVal vData As Long)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.review_cnt = 5
+    mvarreview_cnt = vData
+End Property
+
+
+Public Property Get review_cnt() As Long
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.review_cnt
+    review_cnt = mvarreview_cnt
+End Property
+
+
+
+Public Property Let new_cnt(ByVal vData As Long)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.new_cnt = 5
+    mvarnew_cnt = vData
+End Property
+
+
+Public Property Get new_cnt() As Long
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.new_cnt
+    new_cnt = mvarnew_cnt
+End Property
+
+
+
+Public Property Let totalsec(ByVal vData As Long)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.totalsec = 5
+    mvartotalsec = vData
+End Property
+
+
+Public Property Get totalsec() As Long
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.totalsec
+    totalsec = mvartotalsec
+End Property
+
+
+
+Public Property Let subj(ByVal vData As String)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.subj = 5
+    mvarsubj = vData
+End Property
+
+
+Public Property Get subj() As String
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.subj
+    subj = mvarsubj
+End Property
+
+
+
+Public Property Let userid(ByVal vData As String)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.userid = 5
+    mvaruserid = vData
+End Property
+
+
+Public Property Get userid() As String
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.userid
+    userid = mvaruserid
+End Property
+
+
+
+Public Property Let gijunilja(ByVal vData As String)
+'대입문의 왼쪽에서 속성에 값을 할당할 때 사용됩니다.
+'Syntax: X.gijunilja = 5
+    mvargijunilja = vData
+End Property
+
+
+Public Property Get gijunilja() As String
+'대입문의 오른쪽에서 속성값을 검색할 때 사용됩니다.
+'Syntax: Debug.Print X.gijunilja
+    gijunilja = mvargijunilja
+End Property
+

@@ -1,0 +1,3 @@
+The cab file for your application has been built as 'D:\WEBHARD\개발이력\VB\pquiz2010126\Package20121224\POCKETQUIZ.CAB'.
+
+There is also a batch file in the support directory (D:\WEBHARD\개발이력\VB\pquiz2010126\Package20121224\Support\POCKETQUIZ.BAT) that will allow you to recreate the cab file in case you make changes to some of the files.

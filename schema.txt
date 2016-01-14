@@ -1,0 +1,2 @@
+/* 2011.06.07 fulltext search index */
+ ALTER TABLE vq01 ADD FULLTEXT (quiz,a);

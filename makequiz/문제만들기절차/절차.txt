@@ -1,0 +1,156 @@
+=======================================================
+keypoint
+=======================================================
+db3.mdp에 넣고, 프로그램을 이용해서.
+엑셀로 붙여넣기하고 sqlgate를 이용해서 import한다.
+=======================================================
+1. tq01,tq02.. 등의 이름을 조사한다.
+1.5 백업한다.
+2. 가장 큰 값+1로 해서 테이블 이름을 정하여 생성한다.
+CREATE TABLE `tq14` (
+  `subj` varchar(30) default NULL,
+  `seq` int(11) default NULL,
+  `cat` varchar(20) default NULL,
+  `quiz` mediumtext,
+  `a` mediumtext,
+  `b` mediumtext,
+  `c` mediumtext,
+  `d` mediumtext,
+  `e` mediumtext,
+  `hint` mediumtext,
+  `ans` char(1) default NULL,
+  `resid` varchar(30) default NULL,
+  `mode` char(1) default NULL,
+  `updateymd` varchar(8) default NULL,
+  `updatechasu` int(11) default NULL,
+  UNIQUE KEY `idx_tq14` (`subj`,`seq`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1
+
+
+테이블 이름과 tq14
+인덱스이름(idx_tq14) 을 시퀀셜하게 하나 증가시킨 후
+mysql을 실행해서 생성하면 되겠다. 
+latin1은 서유럽어케릭터셋이긴 하나 sort를 위해 필요한 설정이다.
+
+3. ref.mdb를 열어서 tq14테이블에 데이터를 저장시킨다.
+저장시키기 전 엑셀로 먼저 저장한 후 붙여넣는다.
+그러기 위해 프로그램을 만들던지 일일이 데이터를 붙여 넣던지 한다.
+
+임시 문제 테이블에 붙여넣기 한 후 다음을 수행한다.
+
+update tq14 set resid=0,mode=4,updateymd='20071103' , updatechasu=1 ;
+
+alter table tq14 modify resid varchar(30);
+컬럼사이즈가 모자라는경우는 위와 같이 한다.
+
+4. 결국 tq14 테이블에 모두 데이터를 넣었으면
+다음으로
+5. insert into vq01 select * from tq14; 을 실행하여 마스타로 옮긴다.
+6. 과목 테이블에 ts01 에 해당 정보를 넣는다
+   insert into ts01 values ('minus_10deg_','빼기(10단)' )
+,('minus_11deg_','빼기(11단)' )
+,('minus_12deg_','빼기(12단)' )
+,('minus_13deg_','빼기(13단)' )
+,('minus_14deg_','빼기(14단)' )
+,('minus_15deg_','빼기(15단)' )
+,('minus_16deg_','빼기(16단)' )
+,('minus_17deg_','빼기(17단)' )
+,('minus_18deg_','빼기(18단)' )
+,('minus_19deg_','빼기(19단)' )
+,('minus_1char_','빼기(1자리)')
+,('minus_20deg_','빼기(20단)' )
+,('plus_Atype_', '보태기(1급)')
+,('plus_Btype_', '보태기(2급)')
+,('plus_Ctype_', '보태기(3급)')
+,('plus_Dtype_', '보태기(4급)')
+,('plus_Etype_', '보태기(5급)')
+,('plus_Ftype_', '보태기(6급)')
+,('plus_Gtype_', '보태기(7급)')
+,('plus_Htype_', '보태기(8급)');
+
+7. 프로파일 정보에 tp01 해당 정보를 넣는다.(ts01 에 넣어야하며 tp01이 아니다.)
+   한테이블에 여러개의 과목을 넣게 되는 경우에는
+   tp01 에 추가한다. 
+
+   select * from tp01 where cond like '%tq07%'
+   로 조사해 보면 대략 의미를 알 수 있을거다.
+
+8. 응용프로그램으로 테스트 해본다.
+   만약 tp01에 넣지 않으면 학습계획에는 별 지장이 없지만 , 맞은 수 틀린수 문제 생성에서 오류가 생긴다.
+insert into tp01 values(808,'토익990','subj=''토익990''|tq14',0,0);
+
+insert into tp01 values(731,'빼기(1자리)','subj=''minus_1char_''|tq15',0,0);
+insert into tp01 values(732,'빼기(10단)','subj=''minus_10deg_''|tq15',0,0);
+insert into tp01 values(733,'빼기(11단)','subj=''minus_11deg_''|tq15',0,0);
+insert into tp01 values(734,'빼기(12단)','subj=''minus_12deg_''|tq15',0,0);
+insert into tp01 values(735,'빼기(13단)','subj=''minus_13deg_''|tq15',0,0);
+insert into tp01 values(736,'빼기(14단)','subj=''minus_14deg_''|tq15',0,0);
+insert into tp01 values(737,'빼기(15단)','subj=''minus_15deg_''|tq15',0,0);
+insert into tp01 values(738,'빼기(16단)','subj=''minus_16deg_''|tq15',0,0);
+insert into tp01 values(739,'빼기(17단)','subj=''minus_17deg_''|tq15',0,0);
+insert into tp01 values(740,'빼기(18단)','subj=''minus_18deg_''|tq15',0,0);
+insert into tp01 values(741,'빼기(19단)','subj=''minus_19deg_''|tq15',0,0);
+insert into tp01 values(742,'빼기(20단)','subj=''minus_20deg_''|tq15',0,0);
+insert into tp01 values(758,'보태기(1급)','subj=''plus_Atype_''|tq15',0,0);
+insert into tp01 values(757,'보태기(2급)','subj=''plus_Btype_''|tq15',0,0);
+insert into tp01 values(756,'보태기(3급)','subj=''plus_Ctype_''|tq15',0,0);
+insert into tp01 values(755,'보태기(4급)','subj=''plus_Dtype_''|tq15',0,0);
+insert into tp01 values(754,'보태기(5급)','subj=''plus_Etype_''|tq15',0,0);
+insert into tp01 values(753,'보태기(6급)','subj=''plus_Ftype_''|tq15',0,0);
+insert into tp01 values(752,'보태기(7급)','subj=''plus_Gtype_''|tq15',0,0);
+insert into tp01 values(751,'보태기(8급)','subj=''plus_Htype_''|tq15',0,0);
+
+
+======================
+3,4번과정의 사례
+======================
+mysql> update tq14 set resid=0,mode=4,updateymd='20071103' , updatechasu=1 ;
+
+mysql> select subj,cat,substring(quiz,1,10) quiz,a,b,substring(hint,1,3) hint,an
+s from tq14 limit 1;
++---------+------+------------+------------------+-----------------+------+------+
+| subj    | cat  | quiz       | a                | b               | hint | ans  |
++---------+------+------------+------------------+-----------------+------+------+
+| 토익990 | 1    |  She _____ |  has no interest |  not interested | @    | A    |
++---------+------+------------+------------------+-----------------+------+------+
+| 토익Voca| 1    | abuse      | 남용하다         |                 | @    | A    |
++---------+------+------------+------------------+-----------------+------+------+
+정답이 한개인것과 4지선다인경우의 차이는 별거 없다. b,c,d,e 에 답이 공백으로 되있는
+것과 mode가 1이냐 4이냐 차이다. ( tg02 테이블 참고 )
+
+1 row in set (0.00 sec)
+/* 제목이 일치하는 것이 있는지 조사한다. */
+mysql> select count(*) from vq01 where subj='토익990';
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.03 sec)
+
+0개이면 5번과정을 수행한다.
+mysql> insert into vq01 select * from tq14;
+
+insert into ts01 values('토익990','토익RC-990제');/*과목추가*/
+insert into ts02 values('토익990','영어','20071103','21071103');/*사용자에게 권한부여*/
+insert into ts02 values('minus_1char_','영어','20081103','21081103');/*사용자에게 권한부여*/
+insert into ts02 values('minus_1char_','박규선','20081103','21081103');
+insert into ts02 values('minus_10deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_11deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_12deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_13deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_14deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_15deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_16deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_17deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_18deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_19deg_','박규선','20081103','21081103');
+insert into ts02 values('minus_20deg_','박규선','20081103','21081103');
+insert into ts02 values('plus_Atype_','박규선','20081103','21081103');
+insert into ts02 values('plus_Btype_','박규선','20081103','21081103');
+insert into ts02 values('plus_Ctype_','박규선','20081103','21081103');
+insert into ts02 values('plus_Dtype_','박규선','20081103','21081103');
+insert into ts02 values('plus_Etype_','박규선','20081103','21081103');
+insert into ts02 values('plus_Ftype_','박규선','20081103','21081103');
+insert into ts02 values('plus_Gtype_','박규선','20081103','21081103');
+insert into ts02 values('plus_Htype_','박규선','20081103','21081103');

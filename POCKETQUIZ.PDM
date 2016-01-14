@@ -1,0 +1,782 @@
+[Root]
+Most Recent Package=Standard Setup Package20121224
+
+
+[Package|Standard Setup Package 200604|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\Package (200604)
+
+[Package|Standard Setup Package 200604|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 200604|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 200604|Files Found]
+
+[Package|Standard Setup Package 200604|Files Released]
+3=
+
+[Package|Standard Setup Package 200604|Missing Dependency Information]
+C:\DBITech\SPPro2\Components\ctmonth.ocx=
+C:\DBITech\SPPro2\Components\ctlist.ocx=
+C:\WINNT\system32\WININET.DLL=
+C:\WINNT\system32\odbccp32.dll=
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\MyODBC-standard-3.51.9-win.exe=
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\putool.exe=
+
+[Package|Standard Setup Package 200604|Out-of-Date Dependency Information]
+
+[Package|Standard Setup Package 200604|Files Added]
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\MyODBC-standard-3.51.9-win.exe=
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\putool.exe=
+
+[Package|Standard Setup Package 200604|Files Removed]
+c:\program files\microsoft visual studio\vb98\wizards\pdwizard\redist\mdac_typ.exe=
+
+[Package|Standard Setup Package 200604|Files In Project]
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\POCKETQUIZ.exe=Yes
+C:\WINNT\system32\MSVBVM60.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\system32\Vb6ko.dll=Yes
+C:\WINNT\system32\odbccp32.dll=Yes
+C:\WINNT\system32\WININET.DLL=Yes
+C:\DBITech\SPPro2\Components\ctlist.ocx=Yes
+C:\DBITech\SPPro2\Components\ctmonth.ocx=Yes
+C:\WINNT\system32\dao360.dll=Yes
+C:\WINNT\system32\msjet40.dll=Yes
+C:\WINNT\system32\msjter40.dll=Yes
+C:\WINNT\system32\msjint40.dll=Yes
+C:\WINNT\system32\vbajet32.dll=Yes
+C:\WINNT\system32\expsrv.dll=Yes
+C:\WINNT\system32\mswstr10.dll=Yes
+C:\WINNT\system32\mswdat10.dll=Yes
+C:\WINNT\system32\msrd2x40.dll=Yes
+C:\WINNT\system32\msrd3x40.dll=Yes
+C:\WINNT\system32\msrepl40.dll=Yes
+C:\WINNT\system32\msjtes40.dll=Yes
+C:\WINNT\system32\VB5DB.DLL=Yes
+C:\WINNT\system32\COMDLG32.OCX=Yes
+C:\WINNT\system32\CMDLGKO.DLL=Yes
+C:\WINNT\system32\MSCOMCTL.OCX=Yes
+C:\WINNT\system32\MSCMCKO.DLL=Yes
+C:\WINNT\system32\MSFLXGRD.OCX=Yes
+C:\WINNT\system32\FLXGDKO.DLL=Yes
+C:\WINNT\system32\TABCTL32.OCX=Yes
+C:\WINNT\system32\TABCTKO.DLL=Yes
+C:\WINNT\system32\MSCHRT20.OCX=Yes
+C:\WINNT\system32\MSCH2KO.DLL=Yes
+C:\WINNT\system32\MSCOMCT2.OCX=Yes
+C:\WINNT\system32\MSCC2KO.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\MyODBC-standard-3.51.9-win.exe=Yes
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\putool.exe=Yes
+
+[Package|Standard Setup Package 200604|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 200604|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 200604|Install Locations]
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\POCKETQUIZ.exe=$(AppPath)
+C:\WINNT\system32\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\Vb6ko.dll=$(WinSysPath)
+C:\WINNT\system32\odbccp32.dll=$(WinSysPath)
+C:\WINNT\system32\WININET.DLL=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctlist.ocx=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctmonth.ocx=$(WinSysPath)
+C:\WINNT\system32\dao360.dll=$(MSDAOPath)
+C:\WINNT\system32\msjet40.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\msjter40.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\msjint40.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\vbajet32.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\expsrv.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\mswstr10.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\mswdat10.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\msrd2x40.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\msrd3x40.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\msrepl40.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\msjtes40.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\VB5DB.DLL=$(WinSysPath)
+C:\WINNT\system32\COMDLG32.OCX=$(WinSysPath)
+C:\WINNT\system32\CMDLGKO.DLL=$(WinSysPath)
+C:\WINNT\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINNT\system32\MSCMCKO.DLL=$(WinSysPath)
+C:\WINNT\system32\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINNT\system32\FLXGDKO.DLL=$(WinSysPath)
+C:\WINNT\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINNT\system32\TABCTKO.DLL=$(WinSysPath)
+C:\WINNT\system32\MSCHRT20.OCX=$(WinSysPath)
+C:\WINNT\system32\MSCH2KO.DLL=$(WinSysPath)
+C:\WINNT\system32\MSCOMCT2.OCX=$(WinSysPath)
+C:\WINNT\system32\MSCC2KO.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\MyODBC-standard-3.51.9-win.exe=$(AppPath)
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\putool.exe=$(AppPath)
+
+[Package|Standard Setup Package 200604|Configure Shared Files]
+Applicable=Yes
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\POCKETQUIZ.exe=No
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\MyODBC-standard-3.51.9-win.exe=No
+D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\putool.exe=No
+
+[Package|Standard Setup Package 200604|Distribution]
+Type=single
+Size=
+Title=POCKET QUIZ
+
+[Package|Standard Setup Package 200604|IconGroups]
+Group0=$(Programs)
+PrivateGroup0=-1
+Parent0=
+
+[Package|Standard Setup Package 200604|$(Programs)]
+Icon1=POCKETQUIZ.exe
+Title1=POCKET QUIZ
+StartIn1=$(AppPath)
+Key1=Icon3
+
+[Package|Standard Setup Package 200604|Package]
+PackageFolder=D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\Package (200604)
+ProjectFolder=D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm
+ServerSideCab=
+File1=D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\Package (200604)\setup.exe
+File2=D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\Package (200604)\Setup.Lst
+File3=D:\시사\QuizPro\pquiz20041015pm\pquiz20041015pm\Package (200604)\POCKETQUIZ.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Dep File 1|Root]
+SubWizProgID=PDWizard.DepPkgSubWiz
+BuildFolder=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\Package200802_sub
+
+[Package|Dep File 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Dep File 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Dep File 1|Files Found]
+
+[Package|Dep File 1|Files Released]
+3=
+
+[Package|Dep File 1|Missing Dependency Information]
+C:\Program Files\Microsoft Office\Office10\addins\MSFLXGRD.OCX=
+C:\DBITech\SPPro2\Components\ctmonth.ocx=
+C:\DBITech\SPPro2\Components\ctlist.ocx=
+C:\WINDOWS\system32\wininet.dll=
+C:\WINDOWS\system32\odbccp32.dll=
+
+[Package|Dep File 1|Out-of-Date Dependency Information]
+
+[Package|Dep File 1|Files Added]
+
+[Package|Dep File 1|Files Removed]
+
+[Package|Dep File 1|Files In Project]
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\POCKETQUIZ.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\VB6KO.DLL=Yes
+C:\WINDOWS\system32\odbccp32.dll=Yes
+C:\WINDOWS\system32\wininet.dll=Yes
+C:\Program Files\Common Files\System\ado\msado21.tlb=Yes
+C:\DBITech\SPPro2\Components\ctlist.ocx=Yes
+C:\DBITech\SPPro2\Components\ctmonth.ocx=Yes
+C:\Program Files\Common Files\Microsoft Shared\DAO\dao360.dll=Yes
+C:\WINDOWS\system32\msjet40.dll=Yes
+C:\WINDOWS\system32\msjter40.dll=Yes
+C:\WINDOWS\system32\msjint40.dll=Yes
+C:\WINDOWS\system32\vbajet32.dll=Yes
+C:\WINDOWS\system32\expsrv.dll=Yes
+C:\WINDOWS\system32\mswstr10.dll=Yes
+C:\WINDOWS\system32\mswdat10.dll=Yes
+C:\WINDOWS\system32\msrd2x40.dll=Yes
+C:\WINDOWS\system32\msrd3x40.dll=Yes
+C:\WINDOWS\system32\msrepl40.dll=Yes
+C:\WINDOWS\system32\msjtes40.dll=Yes
+C:\WINDOWS\system32\VB5DB.DLL=Yes
+C:\WINDOWS\system32\COMDLG32.OCX=Yes
+C:\WINDOWS\system32\CMDLGKO.DLL=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\WINDOWS\system32\MSCMCKO.DLL=Yes
+C:\Program Files\Microsoft Office\Office10\addins\MSFLXGRD.OCX=Yes
+C:\WINDOWS\system32\TABCTL32.OCX=Yes
+C:\WINDOWS\system32\TABCTKO.DLL=Yes
+C:\WINDOWS\system32\MSCHRT20.OCX=Yes
+C:\WINDOWS\system32\MSCH2KO.DLL=Yes
+C:\WINDOWS\system32\MSCOMCT2.OCX=Yes
+C:\WINDOWS\system32\MSCC2KO.DLL=Yes
+
+[Package|Dep File 1|Configure Registry Files]
+Applicable=
+
+[Package|Dep File 1|Configure Remote Servers]
+Applicable=
+
+[Package|Dep File 1|Install Locations]
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\POCKETQUIZ.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB6KO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\odbccp32.dll=$(WinSysPath)
+C:\WINDOWS\system32\wininet.dll=$(WinSysPath)
+C:\Program Files\Common Files\System\ado\msado21.tlb=$(CommonFilesSys)\ADO
+C:\DBITech\SPPro2\Components\ctlist.ocx=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctmonth.ocx=$(WinSysPath)
+C:\Program Files\Common Files\Microsoft Shared\DAO\dao360.dll=$(MSDAOPath)
+C:\WINDOWS\system32\msjet40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjter40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjint40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\mswstr10.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\mswdat10.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrd2x40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrd3x40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrepl40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjtes40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+C:\WINDOWS\system32\COMDLG32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\CMDLGKO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCMCKO.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Office\Office10\addins\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\TABCTKO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCHRT20.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCH2KO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCT2.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCC2KO.DLL=$(WinSysPath)
+
+[Package|Dep File 1|Configure Shared Files]
+Applicable=
+
+[Package|Dep File 1|DepFile]
+DepCabFile=POCKETQUIZ.CAB
+DepCabRun=POCKETQUIZ.INF
+DepCabURL=http://www.alkion.net
+
+[Package|Dep File 1|Package]
+PackageFolder=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\Package200802_sub
+ProjectFolder=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221
+ServerSideCab=
+File1=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\Package200802_sub\POCKETQUIZ.DEP
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|setup200802|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\Package200802
+
+[Package|setup200802|Configure DAO ISAMs]
+Applicable=No
+
+[Package|setup200802|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|setup200802|Files Found]
+
+[Package|setup200802|Files Released]
+3=
+
+[Package|setup200802|Missing Dependency Information]
+C:\Program Files\Microsoft Office\Office10\addins\MSFLXGRD.OCX=
+C:\DBITech\SPPro2\Components\ctmonth.ocx=
+C:\DBITech\SPPro2\Components\ctlist.ocx=
+C:\WINDOWS\system32\wininet.dll=
+C:\WINDOWS\system32\odbccp32.dll=
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\putool.exe=
+C:\WINDOWS\system32\ieframe.dll=
+
+[Package|setup200802|Out-of-Date Dependency Information]
+
+[Package|setup200802|Files Added]
+f:\시사\quizpro\pquiz20041015pm\pquiz20080221\putool.exe=
+f:\시사\quizpro\pquiz20041015pm\pquiz20080221\dbes\mysql-connector-odbc-3.51.23-win32\mysql-connector-odbc-3.51.23-win32.exe=
+
+[Package|setup200802|Files Removed]
+c:\program files\microsoft visual studio\vb98\wizards\pdwizard\redist\mdac_typ.exe=
+
+[Package|setup200802|Files In Project]
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\POCKETQUIZ.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\VB6KO.DLL=Yes
+C:\WINDOWS\system32\odbccp32.dll=Yes
+C:\WINDOWS\system32\wininet.dll=Yes
+C:\DBITech\SPPro2\Components\ctlist.ocx=Yes
+C:\DBITech\SPPro2\Components\ctmonth.ocx=Yes
+C:\Program Files\Common Files\Microsoft Shared\DAO\dao360.dll=Yes
+C:\WINDOWS\system32\msjet40.dll=Yes
+C:\WINDOWS\system32\msjter40.dll=Yes
+C:\WINDOWS\system32\msjint40.dll=Yes
+C:\WINDOWS\system32\vbajet32.dll=Yes
+C:\WINDOWS\system32\expsrv.dll=Yes
+C:\WINDOWS\system32\mswstr10.dll=Yes
+C:\WINDOWS\system32\mswdat10.dll=Yes
+C:\WINDOWS\system32\msrd2x40.dll=Yes
+C:\WINDOWS\system32\msrd3x40.dll=Yes
+C:\WINDOWS\system32\msrepl40.dll=Yes
+C:\WINDOWS\system32\msjtes40.dll=Yes
+C:\WINDOWS\system32\VB5DB.DLL=Yes
+C:\WINDOWS\system32\COMDLG32.OCX=Yes
+C:\WINDOWS\system32\CMDLGKO.DLL=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\WINDOWS\system32\MSCMCKO.DLL=Yes
+C:\Program Files\Microsoft Office\Office10\addins\MSFLXGRD.OCX=Yes
+C:\WINDOWS\system32\TABCTL32.OCX=Yes
+C:\WINDOWS\system32\TABCTKO.DLL=Yes
+C:\WINDOWS\system32\MSCHRT20.OCX=Yes
+C:\WINDOWS\system32\MSCH2KO.DLL=Yes
+C:\WINDOWS\system32\MSCOMCT2.OCX=Yes
+C:\WINDOWS\system32\MSCC2KO.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\putool.exe=Yes
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\dbes\mysql-connector-odbc-3.51.23-win32\mysql-connector-odbc-3.51.23-win32.exe=Yes
+C:\WINDOWS\system32\ieframe.dll=Yes
+
+[Package|setup200802|Configure Registry Files]
+Applicable=No
+
+[Package|setup200802|Configure Remote Servers]
+Applicable=No
+
+[Package|setup200802|Install Locations]
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\POCKETQUIZ.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB6KO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\odbccp32.dll=$(WinSysPath)
+C:\WINDOWS\system32\wininet.dll=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctlist.ocx=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctmonth.ocx=$(WinSysPath)
+C:\Program Files\Common Files\Microsoft Shared\DAO\dao360.dll=$(MSDAOPath)
+C:\WINDOWS\system32\msjet40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjter40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjint40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\mswstr10.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\mswdat10.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrd2x40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrd3x40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrepl40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjtes40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+C:\WINDOWS\system32\COMDLG32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\CMDLGKO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCMCKO.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Office\Office10\addins\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\TABCTKO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCHRT20.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCH2KO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCT2.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCC2KO.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\putool.exe=$(AppPath)
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\dbes\mysql-connector-odbc-3.51.23-win32\mysql-connector-odbc-3.51.23-win32.exe=$(AppPath)
+C:\WINDOWS\system32\ieframe.dll=$(WinSysPath)
+
+[Package|setup200802|Configure Shared Files]
+Applicable=Yes
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\POCKETQUIZ.exe=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\putool.exe=No
+F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\dbes\mysql-connector-odbc-3.51.23-win32\mysql-connector-odbc-3.51.23-win32.exe=No
+
+[Package|setup200802|Distribution]
+Type=single
+Size=1.44 MB
+Title=POCKETQUIZ
+
+[Package|setup200802|Package]
+PackageFolder=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\Package200802
+ProjectFolder=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221
+ServerSideCab=
+File1=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\Package200802\setup.exe
+File2=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\Package200802\Setup.Lst
+File3=F:\시사\QuizPro\pquiz20041015pm\pquiz20080221\Package200802\POCKETQUIZ.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|setup200802|IconGroups]
+Group0=POCKETQUIZ
+PrivateGroup0=-1
+Parent0=$(Programs)
+
+[Package|setup200802|POCKETQUIZ]
+Icon1=POCKETQUIZ.exe
+Title1=POCKETQUIZ
+StartIn1=$(AppPath)
+Key1=Icon1
+
+
+[Package|script2010 01|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\temp\QuizPro\pquiz20041015pm\pquiz2010126\Package (2)
+
+[Package|script2010 01|Configure DAO ISAMs]
+Applicable=No
+
+[Package|script2010 01|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|script2010 01|Files Found]
+
+[Package|script2010 01|Files Released]
+3=
+
+[Package|script2010 01|Missing Dependency Information]
+C:\WINDOWS\msagent\agentctl.dll=
+C:\DBITech\SPPro2\Components\ctmonth.ocx=
+C:\DBITech\SPPro2\Components\ctlist.ocx=
+C:\WINDOWS\system32\wininet.dll=
+C:\WINDOWS\system32\odbccp32.dll=
+
+[Package|script2010 01|Out-of-Date Dependency Information]
+
+[Package|script2010 01|Files Added]
+
+[Package|script2010 01|Files Removed]
+
+[Package|script2010 01|Files In Project]
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\VB6KO.DLL=Yes
+C:\WINDOWS\system32\odbccp32.dll=Yes
+C:\WINDOWS\system32\wininet.dll=Yes
+C:\Program Files\Common Files\Microsoft Shared\DAO\dao360.dll=Yes
+C:\WINDOWS\system32\msjet40.dll=Yes
+C:\WINDOWS\system32\msjter40.dll=Yes
+C:\WINDOWS\system32\msjint40.dll=Yes
+C:\WINDOWS\system32\vbajet32.dll=Yes
+C:\WINDOWS\system32\expsrv.dll=Yes
+C:\WINDOWS\system32\mswstr10.dll=Yes
+C:\WINDOWS\system32\mswdat10.dll=Yes
+C:\WINDOWS\system32\msrd2x40.dll=Yes
+C:\WINDOWS\system32\msrd3x40.dll=Yes
+C:\WINDOWS\system32\msrepl40.dll=Yes
+C:\WINDOWS\system32\msjtes40.dll=Yes
+C:\WINDOWS\system32\VB5DB.DLL=Yes
+C:\WINDOWS\system32\COMDLG32.OCX=Yes
+C:\WINDOWS\system32\CMDLGKO.DLL=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\WINDOWS\system32\MSCMCKO.DLL=Yes
+C:\WINDOWS\system32\MSFLXGRD.OCX=Yes
+C:\WINDOWS\system32\FLXGDKO.DLL=Yes
+C:\WINDOWS\system32\TABCTL32.OCX=Yes
+C:\WINDOWS\system32\TABCTKO.DLL=Yes
+C:\WINDOWS\system32\MSCHRT20.OCX=Yes
+C:\WINDOWS\system32\MSCH2KO.DLL=Yes
+C:\WINDOWS\system32\MSCOMCT2.OCX=Yes
+C:\WINDOWS\system32\MSCC2KO.DLL=Yes
+C:\WINDOWS\msagent\agentctl.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\temp\QuizPro\pquiz20041015pm\pquiz2010126\POCKETQUIZ.exe=Yes
+C:\WINDOWS\system32\ctlist.ocx=Yes
+C:\WINDOWS\system32\ctmonth.ocx=Yes
+
+[Package|script2010 01|Configure Registry Files]
+Applicable=No
+
+[Package|script2010 01|Configure Remote Servers]
+Applicable=No
+
+[Package|script2010 01|Install Locations]
+C:\temp\QuizPro\pquiz20041015pm\pquiz20080606\POCKETQUIZ.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB6KO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\odbccp32.dll=$(WinSysPath)
+C:\WINDOWS\system32\wininet.dll=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctlist.ocx=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctmonth.ocx=$(WinSysPath)
+C:\Program Files\Common Files\Microsoft Shared\DAO\dao360.dll=$(MSDAOPath)
+C:\WINDOWS\system32\msjet40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjter40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjint40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\mswstr10.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\mswdat10.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrd2x40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrd3x40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrepl40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjtes40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+C:\WINDOWS\system32\COMDLG32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\CMDLGKO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCMCKO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\FLXGDKO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\TABCTKO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCHRT20.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCH2KO.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCT2.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCC2KO.DLL=$(WinSysPath)
+C:\WINDOWS\msagent\agentctl.dll=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\temp\QuizPro\pquiz20041015pm\pquiz2010126\POCKETQUIZ.exe=$(AppPath)
+C:\WINDOWS\system32\ctlist.ocx=$(WinSysPath)
+C:\WINDOWS\system32\ctmonth.ocx=$(WinSysPath)
+
+[Package|script2010 01|Configure Shared Files]
+Applicable=Yes
+C:\temp\QuizPro\pquiz20041015pm\pquiz20080606\POCKETQUIZ.exe=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+C:\temp\QuizPro\pquiz20041015pm\pquiz2010126\POCKETQUIZ.exe=No
+
+[Package|script2010 01|Distribution]
+Type=single
+Size=
+Title=POCKETQUIZ 2010
+
+[Package|script2010 01|IconGroups]
+Group0=$(Programs)
+PrivateGroup0=-1
+Parent0=
+
+[Package|script2010 01|$(Programs)]
+Icon1=POCKETQUIZ.exe
+Title1=POCKETQUIZ
+StartIn1=$(AppPath)
+Key1=Icon3
+
+[Package|script2010 01|Package]
+PackageFolder=C:\temp\QuizPro\pquiz20041015pm\pquiz2010126\Package (2)
+ProjectFolder=C:\temp\QuizPro\pquiz20041015pm\pquiz2010126
+ServerSideCab=
+File1=C:\temp\QuizPro\pquiz20041015pm\pquiz2010126\Package (2)\setup.exe
+File2=C:\temp\QuizPro\pquiz20041015pm\pquiz2010126\Package (2)\Setup.Lst
+File3=C:\temp\QuizPro\pquiz20041015pm\pquiz2010126\Package (2)\POCKETQUIZ.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Standard Setup Package20121224|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\WEBHARD\개발이력\VB\pquiz2010126\Package20121224
+
+[Package|Standard Setup Package20121224|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package20121224|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package20121224|Files Found]
+
+[Package|Standard Setup Package20121224|Files Released]
+agentctl.dll=
+3=
+
+[Package|Standard Setup Package20121224|Missing Dependency Information]
+C:\Program Files\Common Files\System\ado\msado60_Backcompat.tlb=
+C:\Windows\System32\ieframe.dll=
+C:\DBITech\SPPro2\Components\ctmonth.ocx=
+C:\DBITech\SPPro2\Components\ctlist.ocx=
+C:\Windows\System32\wininet.dll=
+C:\Windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.7601.17514_none_ec83dffa859149af\comctl32.dll=
+C:\Windows\System32\odbccp32.dll=
+C:\Windows\System32\wmp.dll=
+C:\Windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.7601.18201_none_ec80f00e8593ece5\comctl32.dll=
+C:\Windows\System32\urlmon.dll=
+
+[Package|Standard Setup Package20121224|Out-of-Date Dependency Information]
+C:\Windows\System32\MSCOMCTL.OCX=
+C:\Windows\System32\MSCOMCT2.OCX=
+C:\Windows\System32\MSCHRT20.OCX=
+C:\Windows\System32\MSFLXGRD.OCX=
+
+[Package|Standard Setup Package20121224|Files Added]
+
+[Package|Standard Setup Package20121224|Files Removed]
+
+[Package|Standard Setup Package20121224|Files In Project]
+D:\WEBHARD\개발이력\VB\pquiz2010126\POCKETQUIZ.exe=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Windows\System32\odbccp32.dll=Yes
+C:\Windows\System32\wininet.dll=Yes
+C:\DBITech\SPPro2\Components\ctlist.ocx=Yes
+C:\DBITech\SPPro2\Components\ctmonth.ocx=Yes
+C:\Program Files\Common Files\microsoft shared\DAO\dao360.dll=Yes
+C:\Windows\System32\msjet40.dll=Yes
+C:\Windows\System32\msjter40.dll=Yes
+C:\Windows\System32\msjint40.dll=Yes
+C:\Windows\System32\vbajet32.dll=Yes
+C:\Windows\System32\expsrv.dll=Yes
+C:\Windows\System32\mswstr10.dll=Yes
+C:\Windows\System32\mswdat10.dll=Yes
+C:\Windows\System32\msrd2x40.dll=Yes
+C:\Windows\System32\msrd3x40.dll=Yes
+C:\Windows\System32\msrepl40.dll=Yes
+C:\Windows\System32\msjtes40.dll=Yes
+C:\Windows\System32\VB5DB.DLL=Yes
+C:\Windows\System32\ieframe.dll=Yes
+C:\Program Files\Common Files\System\ado\msado60_Backcompat.tlb=Yes
+C:\Windows\System32\COMDLG32.OCX=Yes
+C:\Windows\System32\MSCOMCTL.OCX=Yes
+C:\Windows\System32\MSFLXGRD.OCX=Yes
+C:\Windows\System32\Tabctl32.ocx=Yes
+C:\Windows\System32\MSCHRT20.OCX=Yes
+C:\Windows\System32\MSCOMCT2.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\Windows\System32\urlmon.dll=Yes
+C:\Windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.7601.18201_none_ec80f00e8593ece5\comctl32.dll=Yes
+C:\Windows\System32\wmp.dll=Yes
+
+[Package|Standard Setup Package20121224|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package20121224|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package20121224|Install Locations]
+D:\WEBHARD\개발이력\VB\pquiz2010126\POCKETQUIZ.exe=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\odbccp32.dll=$(WinSysPath)
+C:\Windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.7601.17514_none_ec83dffa859149af\comctl32.dll=$(WinSysPath)
+C:\Windows\System32\wininet.dll=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctlist.ocx=$(WinSysPath)
+C:\DBITech\SPPro2\Components\ctmonth.ocx=$(WinSysPath)
+C:\Program Files\Common Files\microsoft shared\DAO\dao360.dll=$(MSDAOPath)
+C:\Windows\System32\msjet40.dll=$(WinSysPathSysFile)
+C:\Windows\System32\msjter40.dll=$(WinSysPathSysFile)
+C:\Windows\System32\msjint40.dll=$(WinSysPathSysFile)
+C:\Windows\System32\vbajet32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\expsrv.dll=$(WinSysPathSysFile)
+C:\Windows\System32\mswstr10.dll=$(WinSysPathSysFile)
+C:\Windows\System32\mswdat10.dll=$(WinSysPathSysFile)
+C:\Windows\System32\msrd2x40.dll=$(WinSysPathSysFile)
+C:\Windows\System32\msrd3x40.dll=$(WinSysPathSysFile)
+C:\Windows\System32\msrepl40.dll=$(WinSysPathSysFile)
+C:\Windows\System32\msjtes40.dll=$(WinSysPathSysFile)
+C:\Windows\System32\VB5DB.DLL=$(WinSysPath)
+C:\Windows\System32\ieframe.dll=$(WinSysPath)
+C:\Program Files\Common Files\System\ado\msado60_Backcompat.tlb=$(WinSysPath)
+C:\Windows\System32\COMDLG32.OCX=$(WinSysPath)
+C:\Windows\System32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Windows\System32\MSFLXGRD.OCX=$(WinSysPath)
+C:\Windows\System32\Tabctl32.ocx=$(WinSysPath)
+C:\Windows\System32\MSCHRT20.OCX=$(WinSysPath)
+C:\Windows\System32\MSCOMCT2.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Windows\System32\urlmon.dll=$(WinSysPath)
+C:\Windows\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.7601.18201_none_ec80f00e8593ece5\comctl32.dll=$(WinSysPath)
+C:\Windows\System32\wmp.dll=$(AppPath)
+
+[Package|Standard Setup Package20121224|Configure Shared Files]
+Applicable=Yes
+D:\WEBHARD\개발이력\VB\pquiz2010126\POCKETQUIZ.exe=No
+C:\Windows\System32\wmp.dll=No
+
+[Package|Standard Setup Package20121224|Distribution]
+Type=single
+Size=
+Title=POCKETQUIZ
+
+[Package|Standard Setup Package20121224|Package]
+PackageFolder=D:\WEBHARD\개발이력\VB\pquiz2010126\Package20121224
+ProjectFolder=D:\WEBHARD\개발이력\VB\pquiz2010126
+ServerSideCab=
+File1=D:\WEBHARD\개발이력\VB\pquiz2010126\Package20121224\setup.exe
+File2=D:\WEBHARD\개발이력\VB\pquiz2010126\Package20121224\Setup.Lst
+File3=D:\WEBHARD\개발이력\VB\pquiz2010126\Package20121224\POCKETQUIZ.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Standard Setup Package20121224|IconGroups]
+Group0=POCKETQUIZ
+PrivateGroup0=-1
+Parent0=$(Programs)
+
+[Package|Standard Setup Package20121224|POCKETQUIZ]
+Icon1=POCKETQUIZ.exe
+Title1=POCKETQUIZ
+StartIn1=$(AppPath)
+Key1=Icon1
