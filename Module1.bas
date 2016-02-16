@@ -220,7 +220,7 @@ Attribute VB_Name = "Module1"
 Option Explicit
 Option Base 0
 
-Global Const BUILD_NUMBER = "2016-01-08" '####
+Global Const BUILD_NUMBER = "2016-02-17" '####
 
 'Global Const TTS_GLOBAL_URL = "http://www.oddcast.com/demos/tts/tts_example.php?clients"
 'Global Const TTS_GLOBAL_URL = "https://www.vocalware.com/index/demo"
@@ -1611,6 +1611,8 @@ Else
     MsgBox makecnt & " 건을 만들었습니다", vbInformation
 End If
 End Function
+
+'chasu로 조회할때는 포켓퀴즈명에 느낌표는 지운후 처리한다.
 Function getMaxTableVal(clm As String, tbl As String, strWhere) As Long
 Dim lsql As String
 Dim lRs As ADODB.Recordset
@@ -1983,7 +1985,7 @@ pcode = Fn_SQLExec(lsql).rs(0)
 
 code = getMaxTableVal("code", "tp02", "where userid='" & gUserid & "'")
 
-chasu = getMaxTableVal("chasu", "tp02", "WHERE USERID='" & gUserid & "' AND POCKETNM='" & pn & "'")
+chasu = getMaxTableVal("chasu", "tp02", "WHERE USERID='" & gUserid & "' AND (POCKETNM='" & Replace(pn, "!", "") & "' or POCKETNM='!" & Replace(pn, "!", "") & "')")
 
 OBJTABLE = "Tp03" 'RS2(1)
 
@@ -2023,8 +2025,8 @@ Dim ch2 As Long
 Dim ch3 As Long
 
 
-ch2 = getMaxTableVal("chasu", "tp02", "WHERE USERID='" & gUserid & "' AND POCKETNM='" & pn2 & "'")
-ch3 = getMaxTableVal("chasu", "tp03", "WHERE USERID='" & gUserid & "' AND POCKETNM='" & pn2 & "'")
+ch2 = getMaxTableVal("chasu", "tp02", "WHERE USERID='" & gUserid & "' AND (POCKETNM='" & Replace(pn2, "!", "") & "' or POCKETNM='!" & Replace(pn2, "!", "") & "')")
+ch3 = getMaxTableVal("chasu", "tp03", "WHERE USERID='" & gUserid & "' AND (POCKETNM='" & Replace(pn2, "!", "") & "' or POCKETNM='!" & Replace(pn2, "!", "") & "')")
 
 If ch3 > ch2 Then
     Debug.Assert False
@@ -2212,7 +2214,7 @@ pcode = Fn_SQLExec(lsql).rs(0)
 
 code = getMaxTableVal("code", "tp02", "where userid='" & gUserid & "'")
 
-chasu = getMaxTableVal("chasu", "tp02", "WHERE USERID='" & gUserid & "' AND POCKETNM='" & pn & "'")
+chasu = getMaxTableVal("chasu", "tp02", "WHERE USERID='" & gUserid & "' AND (POCKETNM='" & Replace(pn, "!", "") & "' or POCKETNM='!" & Replace(pn, "!", "") & "')")
 
 'OBJTABLE = "Tp03" 'RS2(1)
 
@@ -2262,8 +2264,8 @@ makecnt = 0
 Dim ch2 As Long
 Dim ch3 As Long
 
-ch2 = getMaxTableVal("chasu", "tp02", "WHERE USERID='" & gUserid & "' AND POCKETNM='" & pn2 & "'")
-ch3 = getMaxTableVal("chasu", "tp03", "WHERE USERID='" & gUserid & "' AND POCKETNM='" & pn2 & "'")
+ch2 = getMaxTableVal("chasu", "tp02", "WHERE USERID='" & gUserid & "' AND (POCKETNM='" & Replace(pn2, "!", "") & "' or POCKETNM='!" & Replace(pn2, "!", "") & "')")
+ch3 = getMaxTableVal("chasu", "tp03", "WHERE USERID='" & gUserid & "' AND (POCKETNM='" & Replace(pn2, "!", "") & "' or POCKETNM='!" & Replace(pn2, "!", "") & "')")
 
 If ch3 > ch2 Then
     Debug.Assert False
@@ -2553,7 +2555,7 @@ rs1 = Fn_SQLExec(sSql).rs(0)
 sSql = "select count(*) from tP03 where POCKETNM='" & selPocket & "' and userid='" & gUserid & "' and   o<x and chasu=" & selChasu
 RS2 = Fn_SQLExec(sSql).rs(0)
 
-sSql = "SELECT COUNT(*) FROM TP03 WHERE POCKETNM='" & selPocket & "' AND CHASU=" & selChasu & " AND USERID='" & gUserid & "' and chasu=" & selChasu
+sSql = "SELECT COUNT(*) FROM TP03 WHERE POCKETNM='" & selPocket & "' AND CHASU=" & selChasu & " AND USERID='" & gUserid & "' "
 RSTOTAL = Fn_SQLExec(sSql).rs(0)
 
 rsK = RSTOTAL - rs0 - rs1 - RS2
@@ -2586,7 +2588,7 @@ Else
     
 End If
 
-sSql = "SELECT COUNT(*) FROM TP03 WHERE POCKETNM='" & selPocket & "' AND CHASU=" & selChasu & " AND USERID='" & gUserid & "' and chasu=" & selChasu
+sSql = "SELECT COUNT(*) FROM TP03 WHERE POCKETNM='" & selPocket & "' AND CHASU=" & selChasu & " AND USERID='" & gUserid & "' "
 GETTotalCnt = Fn_SQLExec(sSql).rs(0)
 
 If State = 0 Then

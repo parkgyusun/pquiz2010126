@@ -67,6 +67,7 @@ depth1 = 0
 sumVal = O_
 
 Debug.Assert Order > 1
+If Order = 1 Then Order = 2
 While (sumVal \ Order) = (sumVal / Order)
     depth1 = depth1 + 1
     sumVal = sumVal / Order 'depth1의 개념을 해당 O_에서 유동적으로 바뀔수 있도록 이렇게 수정함
@@ -100,7 +101,7 @@ End Function
 'End Function
 
 
-Public Function getF(ByRef O_ As Long, ByRef H As Long, ByVal Order As Long, ByRef isNew As Boolean, ByRef depth1 As Long, ByRef depth2 As Long, Optional ByRef ph0 As Long, Optional ByRef pH1 As Long) As Long
+Public Function getF(ByRef O_ As Long, ByRef h As Long, ByVal Order As Long, ByRef isNew As Boolean, ByRef depth1 As Long, ByRef depth2 As Long, Optional ByRef ph0 As Long, Optional ByRef pH1 As Long) As Long
 Dim h0 As Long
 Dim h1 As Long
 
@@ -125,11 +126,11 @@ TempO_ = O_ + 1
 Temph0 = geth0(TempO_, depth1, Order)
 
 isNew = False
-If H = Temph0 Then
+If h = Temph0 Then
     O_ = TempO_ 'O_값의 범위 오류 교정
     isNew = True
-ElseIf H > Temph0 Then
-    H = Temph0 - 1 'h의 최대값 범위 오류 교정
+ElseIf h > Temph0 Then
+    h = Temph0 - 1 'h의 최대값 범위 오류 교정
 '    Debug.Assert False
 Else
     '뒤로가기를 한경우
@@ -137,28 +138,28 @@ Else
 End If
 
 Temph0 = geth0(O_, depth1, Order)
-If H <= Temph0 Then
-    If (H + 1) = Temph0 Then
+If h <= Temph0 Then
+    If (h + 1) = Temph0 Then
         O_ = O_ - 1
         If O_ < 1 Then
             O_ = 1
-            H = 1
+            h = 1
         End If
     Else
-        H = Temph0 'h의 최소값 범위 오류 교정
+        h = Temph0 'h의 최소값 범위 오류 교정
         isNew = True
     End If 'Debug.Assert False
 End If
 '---------------------------------------------------------------------------
 
-h1 = getH1(O_, H, depth2, Order)
+h1 = getH1(O_, h, depth2, Order)
 
-getF = H - h1 + O_
-ph0 = H
+getF = h - h1 + O_
+ph0 = h
 pH1 = h1
 End Function
 
-Private Function getH1(ByVal O_ As Long, ByVal H As Long, ByRef depth2 As Long, ByVal Order As Long) As Long
+Private Function getH1(ByVal O_ As Long, ByVal h As Long, ByRef depth2 As Long, ByVal Order As Long) As Long
 
 Dim i As Long
 Dim depth1 As Long
@@ -170,7 +171,7 @@ h0 = geth0(O_, depth1, Order)
 sumVal = h0
 depth2 = 0
 i = 1
-Do Until sumVal >= H
+Do Until sumVal >= h
     sumVal = sumVal + Order ^ i
     depth2 = depth2 + 1
     i = i + 1

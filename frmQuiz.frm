@@ -7,7 +7,7 @@ Begin VB.Form frmQuiz
    BorderStyle     =   0  'None
    ClientHeight    =   6615
    ClientLeft      =   120
-   ClientTop       =   480
+   ClientTop       =   405
    ClientWidth     =   12690
    ControlBox      =   0   'False
    Icon            =   "frmQuiz.frx":0000
@@ -21,6 +21,31 @@ Begin VB.Form frmQuiz
    ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
    Visible         =   0   'False
+   Begin VB.TextBox txtJindo 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H8000000F&
+      BorderStyle     =   0  'None
+      Height          =   375
+      HideSelection   =   0   'False
+      Left            =   45
+      Locked          =   -1  'True
+      TabIndex        =   35
+      Text            =   "Text1"
+      Top             =   5175
+      Width           =   1455
+   End
+   Begin MSComctlLib.ProgressBar pgBarJindo 
+      Height          =   195
+      Left            =   -45
+      TabIndex        =   34
+      Top             =   5760
+      Width           =   1725
+      _ExtentX        =   3043
+      _ExtentY        =   344
+      _Version        =   393216
+      Appearance      =   1
+   End
    Begin VB.CommandButton cmdImgHint 
       Height          =   510
       Left            =   10755
@@ -544,13 +569,13 @@ Begin VB.Form frmQuiz
       Width           =   870
    End
    Begin MSComctlLib.Toolbar Toolbar1 
-      Height          =   675
+      Height          =   645
       Left            =   0
       TabIndex        =   23
       Top             =   5940
       Width           =   12690
       _ExtentX        =   22384
-      _ExtentY        =   1191
+      _ExtentY        =   1138
       ButtonWidth     =   1164
       ButtonHeight    =   1138
       Appearance      =   1
@@ -558,7 +583,7 @@ Begin VB.Form frmQuiz
       ImageList       =   "ImageList1"
       _Version        =   393216
       BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
-         NumButtons      =   5
+         NumButtons      =   9
          BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             ImageIndex      =   1
          EndProperty
@@ -573,6 +598,15 @@ Begin VB.Form frmQuiz
          EndProperty
          BeginProperty Button5 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             ImageIndex      =   5
+         EndProperty
+         BeginProperty Button6 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
+         EndProperty
+         BeginProperty Button7 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+         EndProperty
+         BeginProperty Button8 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+         EndProperty
+         BeginProperty Button9 {66833FEA-8583-11D1-B16A-00C0F0283628} 
          EndProperty
       EndProperty
       Begin MSComDlg.CommonDialog dlgCMDialog 
@@ -606,7 +640,7 @@ Begin VB.Form frmQuiz
       NoFolders       =   0   'False
       Transparent     =   0   'False
       ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-      Location        =   ""
+      Location        =   "http:///"
    End
    Begin VB.Shape Shape2 
       BackStyle       =   1  'Opaque
@@ -850,6 +884,8 @@ Public lfrmMemo As frmMemo
 
 Public mGetRndName As String
 Public gSetLang As String '한:ko-KR, 중: zh-CN, 영: en-US 일:ja-JP, 자동:(공백)
+
+Public TotalQuizCount As Long
 
 Dim lastUpButtonLeft As Boolean
 
@@ -2058,6 +2094,14 @@ If Me.Visible Then
     quizDisp False 'refresh
 End If
 gQuizOnResize = False
+
+pgBarJindo.Width = Toolbar1.Width / 2 - 20
+pgBarJindo.Left = Toolbar1.Left
+pgBarJindo.Top = Toolbar1.Top - pgBarJindo.Height
+
+txtJindo.Left = (pgBarJindo.Width - txtJindo.Width) / 2
+txtJindo.Top = pgBarJindo.Top + pgBarJindo.Height + 50
+
 Exit Sub
 ErrTrap:
     MsgBox err.Description, vbExclamation
@@ -4291,6 +4335,7 @@ picMain.DrawMode = 13
 
 End Sub
 
+
 Private Sub Timer1_Timer()
 
 If pgBar.Value > 10 Then
@@ -4413,8 +4458,6 @@ If cQuiz.forReview = False And ForHint = False And gMainOnResize = False Then
     cQuiz.hint = ""
     Call FocusRect1(0)
 End If
-
-
 
 'If gIsNew Then
 '    optA.Enabled = False
@@ -5647,6 +5690,18 @@ If gMainOnResize = True Then
         imgE1_Click
     End If
 End If
+
+'pgBarJindo.Max = frmQuiz.TotalQuizCount
+If gHangSu <= pgBarJindo.Max Then
+    pgBarJindo.Value = gHangSu
+Else
+    pgBarJindo.Value = pgBarJindo.Max
+End If
+
+pgBarJindo.ToolTipText = "" & gHangSu & " / " & pgBarJindo.Max
+
+txtJindo.Text = "" & gHangSu & " / " & frmQuiz.TotalQuizCount
+'//Call MsgBox("" & gHangSu & "/" & frmQuiz.TotalQuizCount, vbOKOnly, "")
 
 Exit Function
 ErrTrap:

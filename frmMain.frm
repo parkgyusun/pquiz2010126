@@ -6,7 +6,7 @@ Begin VB.Form frmMain
    Caption         =   "POCKETQUIZ"
    ClientHeight    =   7740
    ClientLeft      =   165
-   ClientTop       =   840
+   ClientTop       =   735
    ClientWidth     =   10860
    Icon            =   "frmMain.frx":0000
    KeyPreview      =   -1  'True
@@ -206,7 +206,7 @@ Begin VB.Form frmMain
          NumPanels       =   4
          BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   12065
+            Object.Width           =   11906
             Text            =   "상태"
             TextSave        =   "상태"
          EndProperty
@@ -214,15 +214,15 @@ Begin VB.Form frmMain
             Style           =   5
             Alignment       =   1
             AutoSize        =   2
-            TextSave        =   "오후 6:46"
+            TextSave        =   "오전 12:23"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Alignment       =   1
             AutoSize        =   2
-            Object.Width           =   1429
+            Object.Width           =   1588
             MinWidth        =   1305
-            TextSave        =   "오후 6:46"
+            TextSave        =   "오전 12:23"
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Alignment       =   1
@@ -273,7 +273,7 @@ Begin VB.Form frmMain
       NoFolders       =   0   'False
       Transparent     =   0   'False
       ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-      Location        =   ""
+      Location        =   "http:///"
    End
    Begin SHDocVwCtl.WebBrowser wb2 
       Height          =   1000
@@ -299,7 +299,7 @@ Begin VB.Form frmMain
       NoFolders       =   0   'False
       Transparent     =   0   'False
       ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-      Location        =   ""
+      Location        =   "http:///"
    End
    Begin SHDocVwCtl.WebBrowser wb3 
       Height          =   1000
@@ -325,7 +325,7 @@ Begin VB.Form frmMain
       NoFolders       =   0   'False
       Transparent     =   0   'False
       ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-      Location        =   ""
+      Location        =   "http:///"
    End
    Begin SHDocVwCtl.WebBrowser wb 
       Height          =   1005
@@ -352,7 +352,7 @@ Begin VB.Form frmMain
       NoFolders       =   0   'False
       Transparent     =   0   'False
       ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-      Location        =   ""
+      Location        =   "http:///"
    End
    Begin SHDocVwCtl.WebBrowser wb 
       Height          =   1005
@@ -379,7 +379,7 @@ Begin VB.Form frmMain
       NoFolders       =   0   'False
       Transparent     =   0   'False
       ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-      Location        =   ""
+      Location        =   "http:///"
    End
    Begin VB.Menu mnuFile 
       Caption         =   "1000"
@@ -553,6 +553,9 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuSchedule 
          Caption         =   "학습계획(시험지 만들기)"
          Shortcut        =   {F6}
+      End
+      Begin VB.Menu mnuDeletePaperAuto 
+         Caption         =   "시험지 자동 정리"
       End
       Begin VB.Menu mnuMonth 
          Caption         =   "일정보기"
@@ -1328,6 +1331,69 @@ Else
 End If
 End Sub
 
+Private Sub mnuDeletePaperAuto_Click()
+
+Dim churi_cnt  As Long
+churi_cnt = 0
+Con_Open
+sSql = "select if(dd.od=1,2,dd.od) selOrder,dd.hangsu -1 tmpHangSu,cc.cnt RSTOTAL,ab.pocketnm,ab.chasu,cc.userid from "
+sSql = sSql + " (select b.pocketnm ,b.chasu,b.userid from tp02 a inner join tp02 b on (a.pcode=0 and a.code=b.pcode and a.userid=b.userid) where b.userid='" & gUserid & "'"
+sSql = sSql + "  and b.hidden=0 order by b.pcode, b.create_ymd,b.code) ab"
+sSql = sSql + " inner join (select count(*) cnt,pocketnm,chasu,userid from tp03 group by pocketnm,chasu,userid) cc"
+sSql = sSql + " on (ab.pocketnm=cc.pocketnm and ab.chasu=cc.chasu and ab.userid=cc.userid)"
+sSql = sSql + " inner join tu03 dd on (ab.pocketnm=dd.pocketnm and ab.chasu=dd.chasu and ab.userid=dd.userid) where dd.hangsu>dd.od and ab.pocketnm not like '!%'"
+Set rs = Fn_SQLExec(sSql).rs
+
+'1단계인것중에 진도 다 뺀것은 자식까지 다 지운다 1단계인지는 부모의 부모는 0인 것이다
+'+----------+-----------+---------+---------------------+-------+--------+
+'| selOrder | tmpHangSu | RSTOTAL | pocketnm            | chasu | userid |
+'+----------+-----------+---------+---------------------+-------+--------+
+'|       11 |        92 |     107 | 1 회차 20150816 ~   |     1 | 박규선 |
+'|       10 |       171 |      81 | 1 회차 20151230 ~   |     1 | 박규선 |
+'|       10 |        97 |      84 | 1 회차 20160107 ~   |     1 | 박규선 |
+'|       12 |        43 |     128 | 2 회차  ~           |     4 | 박규선 |
+'|       20 |       400 |     377 | 2 회차 20150803 ~   |     1 | 박규선 |
+'|       10 |       200 |      20 | 2 회차 20151218 ~   |     2 | 박규선 |
+'|       10 |       200 |      80 | 2 회차 20151231 ~   |     1 | 박규선 |
+'|       12 |        12 |     120 | 3 회차  ~           |     4 | 박규선 |
+'|       19 |       276 |     360 | 3 회차 20150806 ~   |     1 | 박규선 |
+'|       10 |       131 |      80 | 3 회차 20160101 ~   |     1 | 박규선 |
+'|       15 |       201 |     196 | 6 회차 20150815 ~   |     1 | 박규선 |
+'|       10 |       200 |      90 | 73 회차 20140924 ~  |     1 | 박규선 |
+'|       10 |        94 |      90 | 74 회차 20140927 ~  |     1 | 박규선 |
+'|       10 |        20 |      90 | 80 회차 20141015 ~  |     1 | 박규선 |
+'|      126 |     31752 |     126 | 복습문제20160107    |     8 | 박규선 |
+'|       10 |       200 |      10 | 복습문제20160114    |     1 | 박규선 |
+'|      289 |    167042 |     289 | 복습문제20160123    |     1 | 박규선 |
+'|      283 |    160178 |     283 | 복습문제20160209    |     2 | 박규선 |
+'|       20 |       800 |      20 | 복습문제20160216    |     1 | 박규선 |
+'+----------+-----------+---------+---------------------+-------+--------+
+'19 rows in set (0.50 sec)
+'19개 가 그 대상이며 거기서 조사해서 적절히 삭제하면 되겠다.
+'중요한것(느낌표가 처음에 들어간 시험지)는 삭제하지 않는다.
+
+Dim tmpHangsu As Long, totalHangSu As Long
+
+Do Until rs.EOF()
+    totalHangSu = cMNIQ.geth0(rs(2) + 1, 0, rs(0)) - 1
+    
+    If rs(1) >= totalHangSu Then
+        Call deletePaper(rs(3), rs(4))
+        churi_cnt = churi_cnt + 1
+    End If
+    rs.MoveNext
+Loop
+Con_Close
+
+If churi_cnt = 0 Then
+    MsgBox "정리 완료 [" & churi_cnt & "]건", vbOKOnly, Me.Caption
+Else
+    MsgBox "정리 완료 [" & churi_cnt & "]건", vbOKOnly, Me.Caption
+    mnuRefresh_Click
+End If
+
+End Sub
+
 Private Sub mnuInsetPocket_Click()
 
 Dim vData As Variant
@@ -1457,6 +1523,36 @@ If 0 < col_arr.count Then
     
 Else
     Call MsgBox("" & churi & "건 정상 처리되었습니다.", vbExclamation, Me.Caption)
+End If
+
+If 0 < churi Then
+    '시험지명을 바꾼다.
+    If InStr(selPocket, "!") = 0 Then
+        sSql = "update tp02 set pocketnm=concat('!',pocketnm) where pocketnm='" & selPocket & "' and chasu=" & selChasu & " and userid='" & gUserid & "'"
+        affected = Fn_SQLExec(sSql).nrow
+        
+        sSql = "update tp03 set pocketnm=concat('!',pocketnm) where pocketnm='" & selPocket & "' and chasu=" & selChasu & " and userid='" & gUserid & "'"
+        affected = Fn_SQLExec(sSql).nrow
+        
+        sSql = "update tu03 set pocketnm=concat('!',pocketnm) where pocketnm='" & selPocket & "' and chasu=" & selChasu & " and userid='" & gUserid & "'"
+        affected = Fn_SQLExec(sSql).nrow
+        
+        selPocket = "!" & selPocket
+    Else
+        
+    End If
+    
+    '시험보기를 바로 진행한다.
+    
+    If MsgBox("시험보기를 하시겠습니까? [" & selPocket & "]", vbQuestion + vbYesNo) = vbYes Then
+        vDataGlobal = selPocket & " " & selChasu
+    Else
+        vDataGlobal = ""
+    End If
+    
+    If InStr(selPocket, "!") > 0 Or vDataGlobal <> "" Then
+        mnuRefresh_Click
+    End If
 End If
 
 Debug.Print (sSql)
@@ -1599,8 +1695,16 @@ TmrAfterTTS_exit = True
 '        End If
 '     Next
 '    frmQuiz.Read_TU03
-    
-    
+Dim RSTOTAL As Long, selOrder As Long
+
+sSql = "SELECT COUNT(*) cnt FROM TP03 WHERE POCKETNM='" & gPocket & "' AND CHASU=" & gChasu & " AND USERID='" & gUserid & "' "
+RSTOTAL = Fn_SQLExec(sSql).rs(0)
+
+sSql = "select od from tu03 where POCKETNM='" & gPocket & "' and userid='" & gUserid & "' AND CHASU=" & gChasu
+selOrder = Fn_SQLExec(sSql).rs(0)
+
+frmQuiz.TotalQuizCount = cMNIQ.geth0(RSTOTAL + 1, 0, selOrder) - 1
+frmQuiz.pgBarJindo.Max = frmQuiz.TotalQuizCount
     
     If frmQuiz.quizDisp = False Then
         gbMnuExamClick = False
@@ -1615,6 +1719,7 @@ TmrAfterTTS_exit = True
     
 '    frmQuiz.optA.SetFocus ' .pic1.SetFocus
 End If
+
 
 
 
@@ -1887,7 +1992,7 @@ rs1 = Fn_SQLExec(sSql).rs(0)
 sSql = "select count(*) from tP03 where POCKETNM='" & selPocket & "' and userid='" & gUserid & "' and   o<x and chasu=" & selChasu
 RS2 = Fn_SQLExec(sSql).rs(0)
 
-sSql = "SELECT COUNT(*) FROM TP03 WHERE POCKETNM='" & selPocket & "' AND CHASU=" & selChasu & " AND USERID='" & gUserid & "' and chasu=" & selChasu
+sSql = "SELECT COUNT(*) FROM TP03 WHERE POCKETNM='" & selPocket & "' AND CHASU=" & selChasu & " AND USERID='" & gUserid & "' "
 RSTOTAL = Fn_SQLExec(sSql).rs(0)
 
 sSql = "select od from tu03 where POCKETNM='" & selPocket & "' and userid='" & gUserid & "' AND CHASU=" & selChasu
@@ -1988,14 +2093,14 @@ End Select
 '-------------------------------------------------------------------------------
 '문항수 진도 계산(S)
 '-------------------------------------------------------------------------------
-Dim tmpHangSu As Long
+Dim tmpHangsu As Long
 Dim totalHangSu As Long
 
-tmpHangSu = getHangsu(selPocket, selChasu) - 1
+tmpHangsu = getHangsu(selPocket, selChasu) - 1
 If selOrder = 1 Then selOrder = 2
 totalHangSu = cMNIQ.geth0(RSTOTAL + 1, 0, selOrder) - 1 '다음 신규 학습문항에서 한개의 항수를 뺀값이 전체항수이다.
 
-Jindo = Format(tmpHangSu / totalHangSu * 100, "##0.00") '문항수진도
+Jindo = Format(tmpHangsu / totalHangSu * 100, "##0.00") '문항수진도
 
 cap = cap & vbCrLf & vbCrLf & "-------------------------------------"
 
@@ -2028,7 +2133,7 @@ Case 95 To 100
 Case Is > 100
     cap = cap & "■■■■■■■■■■(+)"
 End Select
-cap = cap & " " & tmpHangSu & "/" & totalHangSu
+cap = cap & " " & tmpHangsu & "/" & totalHangSu
 '-------------------------------------------------------------------------------
 '문항수 진도 계산(E)
 '-------------------------------------------------------------------------------

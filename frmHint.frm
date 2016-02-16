@@ -7,7 +7,7 @@ Begin VB.Form frmHint
    Caption         =   "힌트 -더블클릭하여 닫기-"
    ClientHeight    =   5040
    ClientLeft      =   150
-   ClientTop       =   825
+   ClientTop       =   720
    ClientWidth     =   13365
    DrawMode        =   10  'Mask Pen
    ForeColor       =   &H0000FF00&
