@@ -920,6 +920,7 @@ Dim time_tick1 As Long
 Dim SSQL1 As String
 Dim trust_firstHWND_wndPlayer As Long
 Dim TmrAfterTTS_pushCount As Long
+Dim is_rightkey_eq_enter As Boolean
 
 'The Main API call that will be used for the playback.
 Private Declare Function mciSendString Lib "winmm.dll" Alias "mciSendStringA" (ByVal _
@@ -946,12 +947,12 @@ Else
 End If
 End Sub
 
-Private Sub chk_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub chk_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 Debug.Print "chk_mousedown"
 chk.Tag = "m"
 End Sub
 
-Private Sub chk_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub chk_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 chk.Tag = ""
 End Sub
 
@@ -1720,9 +1721,17 @@ If Not optA.Visible Then Exit Sub '주관식문제인경우 진입하지 않음
 
 Static oldkey As Integer
 
+If keycode = vbKeyUp Or keycode = vbKeyDown Then
+    is_rightkey_eq_enter = True
+ElseIf keycode = vbKeyPageUp Or keycode = vbKeyPageDown Then
+    is_rightkey_eq_enter = False
+End If
 
-
-If optA.Visible And (keycode = vbKey1 Or keycode = vbKeyA Or keycode = vbKeyNumpad1) Then
+If optC.Visible = False And (0 < InStr(cQuiz.subj, "성경") And (keycode = vbKeyF5 Or keycode = vbKeyRight)) Then
+    optA.Value = True
+    picMain.SetFocus
+    cmdNext_Click
+ElseIf optA.Visible And (keycode = vbKey1 Or keycode = vbKeyA Or keycode = vbKeyNumpad1) Then
     optA.Value = True
     picMain.SetFocus
     If oldkey = keycode Then
@@ -1785,7 +1794,7 @@ ElseIf optE.Visible And (keycode = vbKey5 Or keycode = vbKeyG Or keycode = vbKey
         keycode = 0
         cmdNext_Click
     End If
-ElseIf keycode = vbKeySpace Or keycode = vbKeyRight Or keycode = vbKeyN Then
+ElseIf keycode = vbKeySpace Or keycode = vbKeyF5 Or (is_rightkey_eq_enter And keycode = vbKeyRight) Or keycode = vbKeyN Then
     oldkey = 0
     keycode = 0
     cmdNext_Click
@@ -1805,7 +1814,7 @@ Else
     oldkey = 0
 End If
 
-If keycode = vbKeyJ Or keycode = vbKeyDown Then
+If keycode = vbKeyJ Or keycode = vbKeyDown Or keycode = vbKeyPageDown Then
     If optA.Value And optB.Visible Then
         optB.Value = True
     ElseIf optB.Value And optC.Visible Then
@@ -1829,7 +1838,7 @@ If keycode = vbKeyJ Or keycode = vbKeyDown Then
         End If
     End If
     keycode = 0
-ElseIf keycode = vbKeyK Or keycode = vbKeyUp Then
+ElseIf keycode = vbKeyK Or keycode = vbKeyUp Or keycode = vbKeyPageUp Then
 
     If True Then '맨위 아래로 다시 나타나기
         If optA.Value And optA.Visible Then
@@ -2191,15 +2200,15 @@ cmdNext_Click
 End Sub
 
 
-Private Sub imgA1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgA1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
     bonDraw = True
     picMain.DrawWidth = cFTP.Profile.FontSize / 5
     Call PicMainDrawModeForeColor
-    picMain.Line (X + imgA1.Left, Y + imgA1.Top)-(X + imgA1.Left, Y + imgA1.Top)
+    picMain.Line (x + imgA1.Left, y + imgA1.Top)-(x + imgA1.Left, y + imgA1.Top)
 
 End Sub
 
-Private Sub imgA1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgA1_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static preX As Single
 Static preY As Single
 
@@ -2210,23 +2219,23 @@ Call opt_MouseOut
 If bonDraw Then
     
     If preX = 0 And preY = 0 Then
-        preX = X
-        preY = Y
+        preX = x
+        preY = y
         Exit Sub
     End If
-    Dist = ((X - preX) ^ 2 + (Y - preY) ^ 2) ^ 0.5 '[twip]
+    Dist = ((x - preX) ^ 2 + (y - preY) ^ 2) ^ 0.5 '[twip]
     
     If Dist > picMain.DrawWidth * Screen.TwipsPerPixelX Then
     
-        picMain.Line -(X + imgA1.Left, Y + imgA1.Top)
-        preX = X
-        preY = Y
+        picMain.Line -(x + imgA1.Left, y + imgA1.Top)
+        preX = x
+        preY = y
     End If
 End If
 
 End Sub
 
-Private Sub imgA1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgA1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If (Button And vbLeftButton) = vbLeftButton Then
 '    optA.Value = True
  lastUpButtonLeft = True
@@ -2235,7 +2244,7 @@ Else
     clipText = cQuiz.a
     Me.PopupMenu mnuPop1
 End If
-Call PicMain_MouseUp(Button, Shift, X, Y)
+Call PicMain_MouseUp(Button, Shift, x, y)
 End Sub
 
 
@@ -2253,15 +2262,15 @@ cmdNext_Click
 End Sub
 
 
-Private Sub imgB1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgB1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
     bonDraw = True
     picMain.DrawWidth = cFTP.Profile.FontSize / 5
     Call PicMainDrawModeForeColor
-    picMain.Line (X + imgB1.Left, Y + imgB1.Top)-(X + imgB1.Left, Y + imgB1.Top)
+    picMain.Line (x + imgB1.Left, y + imgB1.Top)-(x + imgB1.Left, y + imgB1.Top)
 
 End Sub
 
-Private Sub imgB1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgB1_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static preX As Single
 Static preY As Single
 
@@ -2272,32 +2281,32 @@ Call opt_MouseOut
 If bonDraw Then
     
     If preX = 0 And preY = 0 Then
-        preX = X
-        preY = Y
+        preX = x
+        preY = y
         Exit Sub
     End If
-    Dist = ((X - preX) ^ 2 + (Y - preY) ^ 2) ^ 0.5 '[twip]
+    Dist = ((x - preX) ^ 2 + (y - preY) ^ 2) ^ 0.5 '[twip]
     
     If Dist > picMain.DrawWidth * Screen.TwipsPerPixelX Then
     
-        picMain.Line -(X + imgB1.Left, Y + imgB1.Top)
-        preX = X
-        preY = Y
+        picMain.Line -(x + imgB1.Left, y + imgB1.Top)
+        preX = x
+        preY = y
     End If
 End If
 
 
 End Sub
 
-Private Sub imgB1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgB1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If (Button And vbLeftButton) = vbLeftButton Then
     lastUpButtonLeft = True
 Else
     lastUpButtonLeft = False
-    clipText = cQuiz.B
+    clipText = cQuiz.b
     Me.PopupMenu mnuPop1
 End If
-Call PicMain_MouseUp(Button, Shift, X, Y)
+Call PicMain_MouseUp(Button, Shift, x, y)
 End Sub
 
 
@@ -2313,15 +2322,15 @@ cmdNext_Click
 End Sub
 
 
-Private Sub imgC1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgC1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
     bonDraw = True
     picMain.DrawWidth = cFTP.Profile.FontSize / 5
     Call PicMainDrawModeForeColor
-    picMain.Line (X + imgC1.Left, Y + imgC1.Top)-(X + imgC1.Left, Y + imgC1.Top)
+    picMain.Line (x + imgC1.Left, y + imgC1.Top)-(x + imgC1.Left, y + imgC1.Top)
 
 End Sub
 
-Private Sub imgC1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgC1_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static preX As Single
 Static preY As Single
 
@@ -2332,32 +2341,32 @@ Call opt_MouseOut
 If bonDraw Then
     
     If preX = 0 And preY = 0 Then
-        preX = X
-        preY = Y
+        preX = x
+        preY = y
         Exit Sub
     End If
-    Dist = ((X - preX) ^ 2 + (Y - preY) ^ 2) ^ 0.5 '[twip]
+    Dist = ((x - preX) ^ 2 + (y - preY) ^ 2) ^ 0.5 '[twip]
     
     If Dist > picMain.DrawWidth * Screen.TwipsPerPixelX Then
     
-        picMain.Line -(X + imgC1.Left, Y + imgC1.Top)
-        preX = X
-        preY = Y
+        picMain.Line -(x + imgC1.Left, y + imgC1.Top)
+        preX = x
+        preY = y
     End If
 End If
 
 
 End Sub
 
-Private Sub imgC1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgC1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If (Button And vbLeftButton) = vbLeftButton Then
     lastUpButtonLeft = True
 Else
     lastUpButtonLeft = False
-    clipText = cQuiz.C
+    clipText = cQuiz.c
     Me.PopupMenu mnuPop1
 End If
-Call PicMain_MouseUp(Button, Shift, X, Y)
+Call PicMain_MouseUp(Button, Shift, x, y)
 End Sub
 
 
@@ -2372,15 +2381,15 @@ Private Sub imgD1_DblClick()
 cmdNext_Click
 End Sub
 
-Private Sub imgD1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgD1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
     bonDraw = True
     picMain.DrawWidth = cFTP.Profile.FontSize / 5
     Call PicMainDrawModeForeColor
-    picMain.Line (X + imgD1.Left, Y + imgD1.Top)-(X + imgD1.Left, Y + imgD1.Top)
+    picMain.Line (x + imgD1.Left, y + imgD1.Top)-(x + imgD1.Left, y + imgD1.Top)
 
 End Sub
 
-Private Sub imgD1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgD1_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static preX As Single
 Static preY As Single
 
@@ -2391,24 +2400,24 @@ Call opt_MouseOut
 If bonDraw Then
     
     If preX = 0 And preY = 0 Then
-        preX = X
-        preY = Y
+        preX = x
+        preY = y
         Exit Sub
     End If
-    Dist = ((X - preX) ^ 2 + (Y - preY) ^ 2) ^ 0.5 '[twip]
+    Dist = ((x - preX) ^ 2 + (y - preY) ^ 2) ^ 0.5 '[twip]
     
     If Dist > picMain.DrawWidth * Screen.TwipsPerPixelX Then
     
-        picMain.Line -(X + imgD1.Left, Y + imgD1.Top)
-        preX = X
-        preY = Y
+        picMain.Line -(x + imgD1.Left, y + imgD1.Top)
+        preX = x
+        preY = y
     End If
 End If
 
 
 End Sub
 
-Private Sub imgD1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgD1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If (Button And vbLeftButton) = vbLeftButton Then
     lastUpButtonLeft = True
 Else
@@ -2416,7 +2425,7 @@ Else
     clipText = cQuiz.d
     Me.PopupMenu mnuPop1
 End If
-Call PicMain_MouseUp(Button, Shift, X, Y)
+Call PicMain_MouseUp(Button, Shift, x, y)
 End Sub
 
 
@@ -2432,15 +2441,15 @@ cmdNext_Click
 End Sub
 
 
-Private Sub imgE1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgE1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
     bonDraw = True
     picMain.DrawWidth = cFTP.Profile.FontSize / 5
     Call PicMainDrawModeForeColor
-    picMain.Line (X + imgE1.Left, Y + imgE1.Top)-(X + imgE1.Left, Y + imgE1.Top)
+    picMain.Line (x + imgE1.Left, y + imgE1.Top)-(x + imgE1.Left, y + imgE1.Top)
 
 End Sub
 
-Private Sub imgE1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgE1_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static preX As Single
 Static preY As Single
 
@@ -2451,24 +2460,24 @@ Call opt_MouseOut
 If bonDraw Then
     
     If preX = 0 And preY = 0 Then
-        preX = X
-        preY = Y
+        preX = x
+        preY = y
         Exit Sub
     End If
-    Dist = ((X - preX) ^ 2 + (Y - preY) ^ 2) ^ 0.5 '[twip]
+    Dist = ((x - preX) ^ 2 + (y - preY) ^ 2) ^ 0.5 '[twip]
     
     If Dist > picMain.DrawWidth * Screen.TwipsPerPixelX Then
     
-        picMain.Line -(X + imgE1.Left, Y + imgE1.Top)
-        preX = X
-        preY = Y
+        picMain.Line -(x + imgE1.Left, y + imgE1.Top)
+        preX = x
+        preY = y
     End If
 End If
 
 
 End Sub
 
-Private Sub imgE1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgE1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If (Button And vbLeftButton) = vbLeftButton Then
     lastUpButtonLeft = True
 Else
@@ -2476,7 +2485,7 @@ Else
     clipText = cQuiz.e
     Me.PopupMenu mnuPop1
 End If
-Call PicMain_MouseUp(Button, Shift, X, Y)
+Call PicMain_MouseUp(Button, Shift, x, y)
 End Sub
 
 
@@ -2784,19 +2793,72 @@ If strQ = "" Then 'http://www.bskorea.or.kr/infobank/korSearch/korbibReadpage.as
     Call Shell("""C:\Program Files\Internet Explorer\iexplore.exe"" http://www.bskorea.or.kr") '홀리바이블에서 대한성서공회로 바꿈, 이유 사이트가 더이상 안열려서...2015.02.24
 Else
 
-    Dim chap1 As Long, sep1 As Long
+    Dim chap1 As Long, sep1 As Long '시101:5 또는 시 101:5 모두 정상적으로 출력되어야 한다.<즉 장 앞에 공백이 없어도 정상적이어야 한다.>
     chap1 = InStr(strQ, " ")
     sep1 = InStr(strQ, ":")
+    
+    If chap1 = 0 Then '공백이 없는 경우이다. c#으로 변환 할 때는 -1로 비교해야 한다.
+        strQ = preNumberString(strQ) + " " + postNumberString(strQ)
+        chap1 = InStr(strQ, " ")
+        sep1 = InStr(strQ, ":")
+    End If
     
     Dim str1 As String, str2 As String
     str1 = Mid(Left(strQ, sep1 - 1), chap1 + 1)
     str2 = Mid(strQ, sep1 + 1)
     
     'Call Shell("""C:\Program Files\Internet Explorer\iexplore.exe"" http://www.holybible.or.kr/B_HDB/cgi/biblesrch.php?VR=HDB&QR=" & strQ & "&OD=")
+    On Error Resume Next
     Call Shell("""C:\Program Files\Internet Explorer\iexplore.exe"" http://www.bskorea.or.kr/infobank/korSearch/korbibReadpage.aspx?version=SAE&book=" & Kor2EngBibleChapter(Left(strQ, chap1 - 1)) & "&chap=" & str1 & "&sec=" & str2 & "&cVersion=&fontString=12px&fontSize=1#focus#focus")
+    On Error GoTo 0
+    
 End If
 
 End Sub
+
+Private Function postNumberString(str As String) As String
+    Dim pos1 As Integer
+    Dim posMin As Integer
+    
+    posMin = 100
+    
+    Dim i As Integer
+    
+    i = 0
+    
+    For i = 0 To 9
+        pos1 = InStr(str, "" & i)
+        If 0 < pos1 And pos1 < posMin Then
+            posMin = pos1
+        End If
+    Next
+    
+    postNumberString = Mid(str, posMin)
+    
+End Function
+
+Private Function preNumberString(str As String) As String
+    Dim pos1 As Integer
+    Dim posMin As Integer
+    
+    posMin = 100
+    
+    Dim i As Integer
+    
+    i = 0
+    
+    For i = 0 To 9
+        pos1 = InStr(str, "" & i)
+        If 0 < pos1 And pos1 < posMin Then
+            posMin = pos1
+        End If
+    Next
+    
+    preNumberString = Left(str, posMin - 1)
+    
+End Function
+
+
 
 Private Function Kor2EngBibleChapter(str As String) As String
 
@@ -3848,13 +3910,13 @@ Private Sub optA_GotFocus()
 picMain.SetFocus
 End Sub
 
-Private Sub optA_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optA_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
     lastSelExample = "a"
 End If
 End Sub
 
-Private Sub optA_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optA_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static updown_cnt As Integer
 Static leftright_cnt As Integer
 Static signY As Integer
@@ -3864,18 +3926,18 @@ Static lastX As Single
 Static bRunning As Boolean
 
 If bAutoClick Or bRunning Then
-    Call motionCatch(1, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, X, Y)
+    Call motionCatch(1, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, x, y)
 End If
 
 
 End Sub
 
-Private Sub optA_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optA_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
-    X1 = X / Screen.TwipsPerPixelX
-    Y1 = Y / Screen.TwipsPerPixelY
+    X1 = x / Screen.TwipsPerPixelX
+    Y1 = y / Screen.TwipsPerPixelY
 
-    If lastSelExample = "a" And X >= 0 And X <= optA.Width And Y >= 0 And Y <= optA.Height Then
+    If lastSelExample = "a" And x >= 0 And x <= optA.Width And y >= 0 And y <= optA.Height Then
         optA.Value = True
 '        Call FocusRect1(1)
         cmdNext_Click
@@ -3903,14 +3965,14 @@ optAutoClickOn.Value = True
 End Sub
 
 
-Private Sub optB_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optB_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
     lastSelExample = "b"
 End If
 If optB.Value = True Then optB.Value = False
 End Sub
 
-Private Sub optB_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optB_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static updown_cnt As Integer
 Static leftright_cnt As Integer
 Static signY As Integer
@@ -3920,18 +3982,18 @@ Static lastX As Single
 Static bRunning As Boolean
 
 If bAutoClick Or bRunning Then
-    Call motionCatch(2, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, X, Y)
+    Call motionCatch(2, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, x, y)
 End If
 End Sub
 
-Private Sub optB_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optB_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
     
     
-        X1 = X / Screen.TwipsPerPixelX
-        Y1 = Y / Screen.TwipsPerPixelY
+        X1 = x / Screen.TwipsPerPixelX
+        Y1 = y / Screen.TwipsPerPixelY
     
-        If lastSelExample = "b" And X >= 0 And X <= optB.Width And Y >= 0 And Y <= optB.Height Then
+        If lastSelExample = "b" And x >= 0 And x <= optB.Width And y >= 0 And y <= optB.Height Then
             optB.Value = True
 '            Call FocusRect1(2)
             cmdNext_Click
@@ -3944,14 +4006,14 @@ If Button = vbLeftButton Then
 End If
 End Sub
 
-Private Sub optC_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optC_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
     lastSelExample = "c"
 End If
 If optC.Value = True Then optC.Value = False
 End Sub
 
-Private Sub optC_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optC_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static updown_cnt As Integer
 Static leftright_cnt As Integer
 Static signY As Integer
@@ -3961,19 +4023,19 @@ Static lastX As Single
 Static bRunning As Boolean
 
 If bAutoClick Or bRunning Then
-    Call motionCatch(3, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, X, Y)
+    Call motionCatch(3, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, x, y)
 End If
 
 
 End Sub
 
-Private Sub optC_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optC_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
    
-    X1 = X / Screen.TwipsPerPixelX
-    Y1 = Y / Screen.TwipsPerPixelY
+    X1 = x / Screen.TwipsPerPixelX
+    Y1 = y / Screen.TwipsPerPixelY
 
-    If lastSelExample = "c" And X >= 0 And X <= optA.Width And Y >= 0 And Y <= optA.Height Then
+    If lastSelExample = "c" And x >= 0 And x <= optA.Width And y >= 0 And y <= optA.Height Then
         optC.Value = True
 '        Call FocusRect1(3)
         cmdNext_Click
@@ -3985,13 +4047,13 @@ If Button = vbLeftButton Then
 End If
 End Sub
 
-Private Sub optD_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optD_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
     lastSelExample = "d"
 End If
 End Sub
 
-Private Sub optD_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optD_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static updown_cnt As Integer
 Static leftright_cnt As Integer
 Static signY As Integer
@@ -4001,7 +4063,7 @@ Static lastX As Single
 Static bRunning As Boolean
 
 If bAutoClick Or bRunning Then
-    Call motionCatch(4, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, X, Y)
+    Call motionCatch(4, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, x, y)
 End If
 
 End Sub
@@ -4014,8 +4076,8 @@ Static Sub motionCatch(idx As Integer, ByRef updown_cnt As Integer, _
     ByRef lastY As Single, _
     ByRef lastX As Single, _
     ByRef bRunning As Boolean, _
-    ByRef X As Single, _
-    ByRef Y As Single)
+    ByRef x As Single, _
+    ByRef y As Single)
 
 Static bRun As Boolean
 Static lastIdx As Integer
@@ -4043,10 +4105,10 @@ bRunning = True '함수가 static이 아니면 함수 종료시점에 이 값이 설정된다.
     
     Dim opt As OptionButton
     
-Debug.Print idx, X, Y, iCatch, optA.Height / 5, Y - lastY, X - lastX
+Debug.Print idx, x, y, iCatch, optA.Height / 5, y - lastY, x - lastX
     
-    deltaY = Y - lastY
-    deltaX = X - lastX
+    deltaY = y - lastY
+    deltaX = x - lastX
     
     If Abs(deltaY) < (optA.Height / 6) And Abs(deltaX) < (optA.Height / 6) Then
         bRun = False
@@ -4076,14 +4138,14 @@ Debug.Print idx, X, Y, iCatch, optA.Height / 5, Y - lastY, X - lastX
                 signY = -1
 Debug.Print "상하방향증가", updown_cnt
             End If
-            lastY = Y
+            lastY = y
         ElseIf deltaY > 0 Then 'move up
             If signY <> 1 Then
                 updown_cnt = updown_cnt + 1
                 signY = 1
 Debug.Print "상하방향증가", updown_cnt
             End If
-            lastY = Y
+            lastY = y
         End If
         
     Else 'If Abs(deltaX) >= Abs(optA.Height /6) Then
@@ -4093,14 +4155,14 @@ Debug.Print "상하방향증가", updown_cnt
                 signX = -1
 Debug.Print "좌우방향증가", leftright_cnt
             End If
-            lastX = X
+            lastX = x
         Else 'left
             If signX <> 1 Then
                 leftright_cnt = leftright_cnt + 1
                 signX = 1
 Debug.Print "좌우방향증가", leftright_cnt
             End If
-            lastX = X
+            lastX = x
         End If
     
 '    Else
@@ -4149,12 +4211,12 @@ End Sub
 
 
 
-Private Sub optD_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optD_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
-    X1 = X / Screen.TwipsPerPixelX
-    Y1 = Y / Screen.TwipsPerPixelY
+    X1 = x / Screen.TwipsPerPixelX
+    Y1 = y / Screen.TwipsPerPixelY
 
-    If lastSelExample = "d" And X >= 0 And X <= optA.Width And Y >= 0 And Y <= optA.Height Then
+    If lastSelExample = "d" And x >= 0 And x <= optA.Width And y >= 0 And y <= optA.Height Then
         optD.Value = True
 '        Call FocusRect1(4)
         cmdNext_Click
@@ -4166,14 +4228,14 @@ If Button = vbLeftButton Then
 End If
 End Sub
 
-Private Sub optE_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optE_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
     lastSelExample = "e"
 End If
 
 End Sub
 
-Private Sub optE_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optE_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static updown_cnt As Integer
 Static leftright_cnt As Integer
 Static signY As Integer
@@ -4183,18 +4245,18 @@ Static lastX As Single
 Static bRunning As Boolean
 
 If bAutoClick Or bRunning Then
-    Call motionCatch(5, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, X, Y)
+    Call motionCatch(5, updown_cnt, leftright_cnt, signY, signX, lastY, lastX, bRunning, x, y)
 End If
 
 
 End Sub
 
-Private Sub optE_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub optE_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = vbLeftButton Then
-    X1 = X / Screen.TwipsPerPixelX
-    Y1 = Y / Screen.TwipsPerPixelY
+    X1 = x / Screen.TwipsPerPixelX
+    Y1 = y / Screen.TwipsPerPixelY
 
-    If lastSelExample = "e" And X >= 0 And X <= optA.Width And Y >= 0 And Y <= optA.Height Then
+    If lastSelExample = "e" And x >= 0 And x <= optA.Width And y >= 0 And y <= optA.Height Then
         optE.Value = True
 '        Call FocusRect1(5)
         cmdNext_Click
@@ -4230,12 +4292,12 @@ clipText = cQuiz.a
 End Sub
 
 Private Sub optTTSB_Click()
-clipText = cQuiz.B
+clipText = cQuiz.b
     Call mnuTTS0_Click
 End Sub
 
 Private Sub optTTSC_Click()
-clipText = cQuiz.C
+clipText = cQuiz.c
     Call mnuTTS0_Click
 End Sub
 
@@ -4254,9 +4316,9 @@ Private Sub optTTSQuiz_Click()
     Call mnuTTS0_Click
 End Sub
 
-Private Sub PicMain_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub PicMain_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If (Button And vbLeftButton) = vbLeftButton Then
-    If (Y < pic1.Top) Then
+    If (y < pic1.Top) Then
         optA.Value = False: optB.Value = False: optC.Value = False: optD.Value = False
     End If
     bonDraw = True
@@ -4265,7 +4327,7 @@ If (Button And vbLeftButton) = vbLeftButton Then
     Call PicMainDrawModeForeColor
     'picMain.ForeColor = vbMagenta
     
-    picMain.Line (X, Y)-(X, Y)
+    picMain.Line (x, y)-(x, y)
 
 Else
     bonDraw = False
@@ -4301,7 +4363,7 @@ Private Function GrayScaleFromColor(ByVal lPenColor As Long) As Long
 End Function
 
 
-Private Sub picMain_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub picMain_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = 0 Then Exit Sub
 Static preX As Single
 Static preY As Single
@@ -4313,23 +4375,23 @@ Dim Dist As Single
 If ((bonDraw And Button) = vbLeftButton) And Shift = 0 Then  '왼쪽버튼 클릭
     
     If preX = 0 And preY = 0 Then
-        preX = X
-        preY = Y
+        preX = x
+        preY = y
         Exit Sub
     End If
-    Dist = ((X - preX) ^ 2 + (Y - preY) ^ 2) ^ 0.5 '[twip]
+    Dist = ((x - preX) ^ 2 + (y - preY) ^ 2) ^ 0.5 '[twip]
     
     If Dist > picMain.DrawWidth * Screen.TwipsPerPixelX Then
     
-        picMain.Line -(X, Y)
-        preX = X
-        preY = Y
+        picMain.Line -(x, y)
+        preX = x
+        preY = y
     End If
 End If
 
 End Sub
 
-Private Sub PicMain_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub PicMain_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 bonDraw = False
 picMain.DrawMode = 13
 
@@ -4451,8 +4513,8 @@ lastSelExample = ""
 
 If cQuiz.forReview = False And ForHint = False And gMainOnResize = False Then
     cQuiz.a = ""
-    cQuiz.B = ""
-    cQuiz.C = ""
+    cQuiz.b = ""
+    cQuiz.c = ""
     cQuiz.d = ""
     cQuiz.e = ""
     cQuiz.hint = ""
@@ -4893,12 +4955,12 @@ cQuiz.cat = rs(0)
 cQuiz.quiz = rs(1)
 
 cQuiz.o = rs("O")
-cQuiz.X = rs("X")
+cQuiz.x = rs("X")
 cQuiz.update_ymd = rs("UPDATE_YMD")
 cQuiz.reserve_ymd = rs("RESERVE_YMD")
 cQuiz.gangyek = rs("GANGYEK")
-frmMain.lblTitle(1).Caption = frmMain.lblTitle(1).Tag & "[" & iString(cQuiz.o, 1) & iString(cQuiz.X, 2) & "]"
-frmMain.lblTitle(1).ForeColor = calForgetcolor2(cQuiz.o, cQuiz.X, cQuiz.update_ymd, cQuiz.reserve_ymd, cQuiz.gangyek)
+frmMain.lblTitle(1).Caption = frmMain.lblTitle(1).Tag & "[" & iString(cQuiz.o, 1) & iString(cQuiz.x, 2) & "]"
+frmMain.lblTitle(1).ForeColor = calForgetcolor2(cQuiz.o, cQuiz.x, cQuiz.update_ymd, cQuiz.reserve_ymd)
 
 vHint = rs("hint")
 If IsNull(vHint) Or vHint = "" Then
@@ -4936,14 +4998,14 @@ If cQuiz.mode <> "2" Then
     err.Clear
     On Error GoTo 0
     On Error Resume Next
-    cQuiz.B = rs(3)
+    cQuiz.b = rs(3)
 '    On Error GoTo 0
-    If Len(cQuiz.B) = 0 Or err.Number <> 0 Then
+    If Len(cQuiz.b) = 0 Or err.Number <> 0 Then
       
-      cQuiz.B = slectnotin(cQuiz.subj, cQuiz.seq, lstchr, True, cQuiz.mode, seq, cQuiz.a)
+      cQuiz.b = slectnotin(cQuiz.subj, cQuiz.seq, lstchr, True, cQuiz.mode, seq, cQuiz.a)
       cQuiz.B_seq = seq
-      If cQuiz.mode = "1" And LenH(strLeft1) = 2 And strLeft1 = Left(cQuiz.B, 1) And lenStrLeft1 = 2 Then
-        cQuiz.B = slectnotin(cQuiz.subj, cQuiz.seq, lstchr, True, cQuiz.mode, seq, cQuiz.a) '요구 요구하다, 등 유사답안이 등장하는 것을 방지하기 위함이다.
+      If cQuiz.mode = "1" And LenH(strLeft1) = 2 And strLeft1 = Left(cQuiz.b, 1) And lenStrLeft1 = 2 Then
+        cQuiz.b = slectnotin(cQuiz.subj, cQuiz.seq, lstchr, True, cQuiz.mode, seq, cQuiz.a) '요구 요구하다, 등 유사답안이 등장하는 것을 방지하기 위함이다.
         cQuiz.B_seq = seq
       End If
     End If
@@ -4951,12 +5013,12 @@ If cQuiz.mode <> "2" Then
     err.Clear
     On Error GoTo 0
     On Error Resume Next
-    cQuiz.C = rs(4).Value
-    If Len(cQuiz.C) = 0 Or err.Number <> 0 Then
-          cQuiz.C = slectnotin(cQuiz.subj, cQuiz.seq, lstchr, , , seq, cQuiz.a)
+    cQuiz.c = rs(4).Value
+    If Len(cQuiz.c) = 0 Or err.Number <> 0 Then
+          cQuiz.c = slectnotin(cQuiz.subj, cQuiz.seq, lstchr, , , seq, cQuiz.a)
           cQuiz.C_seq = seq
-          If cQuiz.mode = "1" And LenH(strLeft1) = 2 And strLeft1 = Left(cQuiz.C, 1) And lenStrLeft1 = 2 Then
-            cQuiz.C = slectnotin(cQuiz.subj, cQuiz.seq, lstchr, True, cQuiz.mode, seq, cQuiz.a) '요구 요구하다, 등 유사답안이 등장하는 것을 방지하기 위함이다.
+          If cQuiz.mode = "1" And LenH(strLeft1) = 2 And strLeft1 = Left(cQuiz.c, 1) And lenStrLeft1 = 2 Then
+            cQuiz.c = slectnotin(cQuiz.subj, cQuiz.seq, lstchr, True, cQuiz.mode, seq, cQuiz.a) '요구 요구하다, 등 유사답안이 등장하는 것을 방지하기 위함이다.
             cQuiz.C_seq = seq
           End If
     End If
@@ -5157,7 +5219,7 @@ If Not (lfrmMemo Is Nothing) Then
 End If
 
 Dim K As Integer
-Dim N As Integer
+Dim n As Integer
 Dim str4 As String
 
 
@@ -5197,7 +5259,7 @@ If (cQuiz.mode = "1" And cQuiz.forReview = False And cQuiz.isNew = False) Or (gM
                 
                 K = Fix(Rnd * 1000) Mod 4
                 
-                For N = 0 To K
+                For n = 0 To K
                     Call cQuiz.swap
                 Next
             End If
@@ -5207,7 +5269,7 @@ If (cQuiz.mode = "1" And cQuiz.forReview = False And cQuiz.isNew = False) Or (gM
                 
                 K = Fix(Rnd * 1000) Mod 5
                 
-                For N = 0 To K
+                For n = 0 To K
                     Call cQuiz.swap
                 Next
             End If
@@ -5343,7 +5405,7 @@ End If
 
 '자동줄바꿈은 categori에 ":" 문자가 있는경우이다.
 'If InStr(.cat, ":") > 0 Then
-    cQuiz.b2 = autoCRLF(cQuiz.B, picMain.Width - pic1.Left * 2, pic1, True)
+    cQuiz.b2 = autoCRLF(cQuiz.b, picMain.Width - pic1.Left * 2, pic1, True)
 pic1.Print cQuiz.b2 'autoCRLF(cQuiz.B, picMain.Width - pic1.Left * 2, pic1, True)
 'End If
     
@@ -5374,7 +5436,7 @@ End If
 
 '자동줄바꿈은 categori에 ":" 문자가 있는경우이다.
 'If InStr(.cat, ":") > 0 Then
-cQuiz.C2 = autoCRLF(cQuiz.C, picMain.Width - pic1.Left * 2, pic1, True)
+cQuiz.C2 = autoCRLF(cQuiz.c, picMain.Width - pic1.Left * 2, pic1, True)
 'End If
     
 
@@ -5598,9 +5660,9 @@ If InStr(cQuiz.subj, "한영") > 0 And (cQuiz.isNew Or cQuiz.Correct_chk) Then
     If cQuiz.ans = "A" Then
         clipText = Trim(cQuiz.a)
     ElseIf cQuiz.ans = "B" Then
-        clipText = Trim(cQuiz.B)
+        clipText = Trim(cQuiz.b)
     ElseIf cQuiz.ans = "C" Then
-        clipText = Trim(cQuiz.C)
+        clipText = Trim(cQuiz.c)
     ElseIf cQuiz.ans = "D" Then
         clipText = Trim(cQuiz.d)
     ElseIf cQuiz.ans = "E" Then

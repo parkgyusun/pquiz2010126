@@ -286,7 +286,7 @@ Begin VB.Form frmSchedule
             _ExtentX        =   503
             _ExtentY        =   503
             _Version        =   393216
-            Format          =   101056513
+            Format          =   88342529
             CurrentDate     =   38188
          End
          Begin MSComCtl2.DTPicker dtp2 
@@ -298,7 +298,7 @@ Begin VB.Form frmSchedule
             _ExtentX        =   503
             _ExtentY        =   503
             _Version        =   393216
-            Format          =   101056513
+            Format          =   88342529
             CurrentDate     =   38188
          End
       End
@@ -1233,7 +1233,7 @@ Begin VB.Form frmSchedule
          ForeColor       =   -2147483630
          BackColor       =   -2147483633
          Appearance      =   1
-         StartOfWeek     =   101056513
+         StartOfWeek     =   88342529
          CurrentDate     =   38207
       End
       Begin MSComCtl2.MonthView mv3_1 
@@ -1248,7 +1248,7 @@ Begin VB.Form frmSchedule
          ForeColor       =   -2147483630
          BackColor       =   -2147483633
          Appearance      =   1
-         StartOfWeek     =   101056513
+         StartOfWeek     =   88342529
          CurrentDate     =   38207
       End
       Begin VB.Frame Frame1 
@@ -2464,15 +2464,15 @@ Private Sub lst1_1_DblClick()
 cmd1L2R_Click
 End Sub
 
-Private Sub lst1_1_DragDrop(Source As Control, X As Single, Y As Single)
+Private Sub lst1_1_DragDrop(Source As Control, x As Single, y As Single)
     If Source.Name = "lst1_2" Then
-        lst1_1.DragDrop (X / Screen.TwipsPerPixelX), (Y / Screen.TwipsPerPixelY)
+        lst1_1.DragDrop (x / Screen.TwipsPerPixelX), (y / Screen.TwipsPerPixelY)
     End If
 End Sub
 
-Private Sub lst1_1_DragOver(Source As Control, X As Single, Y As Single, State As Integer)
+Private Sub lst1_1_DragOver(Source As Control, x As Single, y As Single, State As Integer)
     If Source.Name = "lst1_2" Then
-        lst1_1.DragOver (X / Screen.TwipsPerPixelX), (Y / Screen.TwipsPerPixelY), State
+        lst1_1.DragOver (x / Screen.TwipsPerPixelX), (y / Screen.TwipsPerPixelY), State
     End If
 
 End Sub
@@ -2502,15 +2502,15 @@ Private Sub lst1_2_DblClick()
 cmd1R2L_Click
 End Sub
 
-Private Sub lst1_2_DragDrop(Source As Control, X As Single, Y As Single)
+Private Sub lst1_2_DragDrop(Source As Control, x As Single, y As Single)
     If Source.Name = "lst1_1" Then
-        lst1_2.DragDrop (X / Screen.TwipsPerPixelX), (Y / Screen.TwipsPerPixelY)
+        lst1_2.DragDrop (x / Screen.TwipsPerPixelX), (y / Screen.TwipsPerPixelY)
     End If
 End Sub
 
-Private Sub lst1_2_DragOver(Source As Control, X As Single, Y As Single, State As Integer)
+Private Sub lst1_2_DragOver(Source As Control, x As Single, y As Single, State As Integer)
     If Source.Name = "lst1_1" Then
-        lst1_2.DragOver (X / Screen.TwipsPerPixelX), (Y / Screen.TwipsPerPixelY), State
+        lst1_2.DragOver (x / Screen.TwipsPerPixelX), (y / Screen.TwipsPerPixelY), State
     End If
 End Sub
 
@@ -2538,15 +2538,15 @@ Private Sub lst1_3_DblClick()
 cmd2L2R_Click
 End Sub
 
-Private Sub lst1_3_DragDrop(Source As Control, X As Single, Y As Single)
+Private Sub lst1_3_DragDrop(Source As Control, x As Single, y As Single)
     If Source.Name = "lst1_4" Then
-        lst1_3.DragDrop (X / Screen.TwipsPerPixelX), (Y / Screen.TwipsPerPixelY)
+        lst1_3.DragDrop (x / Screen.TwipsPerPixelX), (y / Screen.TwipsPerPixelY)
     End If
 End Sub
 
-Private Sub lst1_3_DragOver(Source As Control, X As Single, Y As Single, State As Integer)
+Private Sub lst1_3_DragOver(Source As Control, x As Single, y As Single, State As Integer)
     If Source.Name = "lst1_4" Then
-        lst1_3.DragOver (X / Screen.TwipsPerPixelX), (Y / Screen.TwipsPerPixelY), State
+        lst1_3.DragOver (x / Screen.TwipsPerPixelX), (y / Screen.TwipsPerPixelY), State
     End If
 End Sub
 
@@ -2575,15 +2575,15 @@ Private Sub lst1_4_DblClick()
 cmd2R2L_Click
 End Sub
 
-Private Sub lst1_4_DragDrop(Source As Control, X As Single, Y As Single)
+Private Sub lst1_4_DragDrop(Source As Control, x As Single, y As Single)
     If Source.Name = "lst1_3" Then
-        lst1_4.DragDrop (X / Screen.TwipsPerPixelX), (Y / Screen.TwipsPerPixelY)
+        lst1_4.DragDrop (x / Screen.TwipsPerPixelX), (y / Screen.TwipsPerPixelY)
     End If
 End Sub
 
-Private Sub lst1_4_DragOver(Source As Control, X As Single, Y As Single, State As Integer)
+Private Sub lst1_4_DragOver(Source As Control, x As Single, y As Single, State As Integer)
     If Source.Name = "lst1_3" Then
-        lst1_4.DragOver (X / Screen.TwipsPerPixelX), (Y / Screen.TwipsPerPixelY), State
+        lst1_4.DragOver (x / Screen.TwipsPerPixelX), (y / Screen.TwipsPerPixelY), State
     End If
 End Sub
 
@@ -3814,7 +3814,7 @@ Private Sub dtp1_CloseUp()
 nTxt1_2.Text = date2Str(dtp1.Value)
 End Sub
 
-Private Sub dtp1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub dtp1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 dtp1.Value = str2Date(nTxt1_2.Text)
 End Sub
 
@@ -3822,7 +3822,7 @@ Private Sub dtp2_CloseUp()
 nTxt1_3.Text = date2Str(dtp2.Value)
 End Sub
 
-Private Sub dtp2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub dtp2_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 dtp2.Value = str2Date(nTxt1_3.Text)
 End Sub
 

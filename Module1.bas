@@ -220,7 +220,7 @@ Attribute VB_Name = "Module1"
 Option Explicit
 Option Base 0
 
-Global Const BUILD_NUMBER = "2016-02-17" '####
+Global Const BUILD_NUMBER = "2016-10-10" '####
 
 'Global Const TTS_GLOBAL_URL = "http://www.oddcast.com/demos/tts/tts_example.php?clients"
 'Global Const TTS_GLOBAL_URL = "https://www.vocalware.com/index/demo"
@@ -389,14 +389,14 @@ ByVal lpszDriver As String, ByVal lpszAttributes As String) As Long
 '****************************************************************
 
 
-Public Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Long, ByVal lpFileName As String) As Long
-Public Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpString As Any, ByVal lpFileName As String) As Long
+Public Declare Function GetPrivateProfileString Lib "KERNEL32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Long, ByVal lpFileName As String) As Long
+Public Declare Function WritePrivateProfileString Lib "KERNEL32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpString As Any, ByVal lpFileName As String) As Long
 
-Public Declare Function LoadLibrary Lib "kernel32" Alias "LoadLibraryA" (ByVal lpLibFileName As String) As Long
-Public Declare Function GetProcAddress Lib "kernel32" (ByVal hModule As Long, ByVal lpProcName As String) As Long
+Public Declare Function LoadLibrary Lib "KERNEL32" Alias "LoadLibraryA" (ByVal lpLibFileName As String) As Long
+Public Declare Function GetProcAddress Lib "KERNEL32" (ByVal hModule As Long, ByVal lpProcName As String) As Long
 Public Declare Function CallWindowProc Lib "user32" Alias "CallWindowProcA" (ByVal lpPrevWndFunc As Long, ByVal hwnd As Long, ByVal msg As Any, ByVal wParam As Any, ByVal lParam As Any) As Long
 'Public Declare Function GetProcAddress Lib "kernel32" (ByVal hModule As Long, ByVal lpProcName As String) As Long
-Public Declare Function FreeLibrary Lib "kernel32" (ByVal hLibModule As Long) As Long
+Public Declare Function FreeLibrary Lib "KERNEL32" (ByVal hLibModule As Long) As Long
 
 
 Public Declare Function ImmGetContext Lib "imm32.dll" (ByVal hwnd As Long) As Long
@@ -429,7 +429,7 @@ Global Const IME_SMODE_CONVERSATION = &H10
 
 Public Declare Function SetParent Lib "user32" (ByVal hWndChild As Long, ByVal hWndNewParent As Long) As Long
 
-Public Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal hWndInsertAfter As Long, ByVal X As Long, ByVal Y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long
+Public Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal hWndInsertAfter As Long, ByVal x As Long, ByVal y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long
 
 Public Declare Function LockWindowUpdate Lib "user32" (ByVal hwndLock As Long) As Long
 
@@ -478,7 +478,7 @@ Public sSql As String
 Public SELFLAG As Boolean
 
 Global cFTP As New clsFTP
-Public Declare Function SleepEx Lib "kernel32" (ByVal dwMilliseconds As Long, ByVal bAlertable As Long) As Long
+Public Declare Function SleepEx Lib "KERNEL32" (ByVal dwMilliseconds As Long, ByVal bAlertable As Long) As Long
 
 '//결과값을 여러가지 형태로 보여주는 result
 Public Type ut_bRecordSet
@@ -577,15 +577,15 @@ Private tts_eng_str As String
 
 '------------
 'UTF8관련
-Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" _
+Private Declare Sub CopyMemory Lib "KERNEL32" Alias "RtlMoveMemory" _
 (Destination As Byte, Source As Byte, ByVal Length As Long)
 
 'UTF8을 ANSI ASCII 코드로 변환
-Private Declare Function MultiByteToWideChar Lib "kernel32" (ByVal CodePage As Long, ByVal dwFlags As Long, ByVal lpMultiByteStr As Long, ByVal cchMultiByte As Long, ByVal lpWideCharStr As Long, ByVal cchWideChar As Long) As Long
+Private Declare Function MultiByteToWideChar Lib "KERNEL32" (ByVal CodePage As Long, ByVal dwFlags As Long, ByVal lpMultiByteStr As Long, ByVal cchMultiByte As Long, ByVal lpWideCharStr As Long, ByVal cchWideChar As Long) As Long
 
-Private Declare Function GetACP Lib "kernel32" () As Long
+Private Declare Function GetACP Lib "KERNEL32" () As Long
 
-Private Declare Function WideCharToMultiByteArray Lib "kernel32" Alias "WideCharToMultiByte" _
+Private Declare Function WideCharToMultiByteArray Lib "KERNEL32" Alias "WideCharToMultiByte" _
 (ByVal CodePage As Long, _
 ByVal dwFlags As Long, _
 ByRef lpWideCharStr As Byte, _
@@ -596,9 +596,9 @@ ByVal lpDefaultChar As Long, _
 ByVal lpUsedDefaultChar As Long) As Long
 
 'Private Declare Function MultiByteToWideChar Lib "Kernel32" (ByVal CodePage As Long, ByVal dwFlags As Long, ByVal lpMultiByteStr As Long, ByVal cchMultiByte As Long, ByVal lpWideCharStr As Long, ByVal cchWideChar As Long) As Long
-Private Declare Function WideCharToMultiByte Lib "kernel32" (ByVal CodePage As Long, ByVal dwFlags As Long, ByVal lpWideCharStr As Long, ByVal cchWideChar As Long, ByVal lpMultiByteStr As Long, ByVal cchMultiByte As Long, ByVal lpDefaultChar As Long, ByVal lpUsedDefaultChar As Long) As Long
+Private Declare Function WideCharToMultiByte Lib "KERNEL32" (ByVal CodePage As Long, ByVal dwFlags As Long, ByVal lpWideCharStr As Long, ByVal cchWideChar As Long, ByVal lpMultiByteStr As Long, ByVal cchMultiByte As Long, ByVal lpDefaultChar As Long, ByVal lpUsedDefaultChar As Long) As Long
 
-Public Declare Function GetTickCount Lib "kernel32" () As Long
+Public Declare Function GetTickCount Lib "KERNEL32" () As Long
 
 
 Private Type abyteBOM 'Byte Order Mark
@@ -1126,7 +1126,7 @@ Function UnZipfile(fname As String) As Boolean
 
 End Function
 Private Function Show_ZipContents2(fnamefull As String, ToDir As String) As Boolean
-    Dim X As Long
+    Dim x As Long
     Dim Enc As String
     Dim DirCnt As Long
     Dim FileCnt As Long
@@ -1135,21 +1135,21 @@ Private Function Show_ZipContents2(fnamefull As String, ToDir As String) As Bool
 '    For X = 1 To lstInZip.ListItems.Count
 '        lstInZip.ListItems(X).Selected = False
 '    Next
-    For X = 1 To 1
+    For x = 1 To 1
 '        With lstInZip
             Enc = " "
-            If ZF.Encrypted(X) Then Enc = "+"
-            If Not ZF.IsDir(X) Then
+            If ZF.Encrypted(x) Then Enc = "+"
+            If Not ZF.IsDir(x) Then
                 FileCnt = FileCnt + 1
 '                .ListItems.Add X, , Enc & ZF.FileName(X)
 '                .ListItems(X).SubItems(1) = ZF.Method(X)
-                Temp = ZF.CRC32(X)
+                Temp = ZF.CRC32(x)
                 If Temp = 0 Then
 '                    .ListItems(X).SubItems(2) = "?"
                 Else
 '                    .ListItems(X).SubItems(2) = Hex(Temp)
                 End If
-                Temp = ZF.Compressed_Size(X)
+                Temp = ZF.Compressed_Size(x)
 '                If Temp = 0 Then
 '                    .ListItems(X).SubItems(3) = "?"
 '                Else
@@ -1189,11 +1189,11 @@ End Function
 Private Sub UnZipAll(ByVal cnt As Long, ToDir As String)
     Dim FileUnzip() As Boolean
     Dim Sel As Boolean
-    Dim X As Long
+    Dim x As Long
     Dim retVal As Boolean
         ReDim FileUnzip(cnt)
-        For X = 1 To cnt
-                FileUnzip(X) = True
+        For x = 1 To cnt
+                FileUnzip(x) = True
         Next
     If ToDir = "" Then
         MsgBox "No path to store files", vbCritical
@@ -3249,15 +3249,15 @@ End Function
 
 Public Function RGBToHSL201(ByVal RGBValue As Long) As HSL
 ' by Donald, donald@xbeat.net, 20011126
-  Dim R As Long, g As Long, B As Long
+  Dim R As Long, g As Long, b As Long
   Dim lMax As Long, lMin As Long, lDiff As Long, lSum As Long
 
   R = RGBValue And &HFF&
   g = (RGBValue And &HFF00&) \ &H100&
-  B = (RGBValue And &HFF0000) \ &H10000
+  b = (RGBValue And &HFF0000) \ &H10000
 
   If R > g Then lMax = R: lMin = g Else lMax = g: lMin = R
-  If B > lMax Then lMax = B Else If B < lMin Then lMin = B
+  If b > lMax Then lMax = b Else If b < lMin Then lMin = b
 
   lDiff = lMax - lMin
   lSum = lMax + lMin
@@ -3276,14 +3276,14 @@ Public Function RGBToHSL201(ByVal RGBValue As Long) As HSL
     Dim q As Single: q = 60 / lDiff
     Select Case lMax
     Case R
-      If g < B Then
-        RGBToHSL201.hue = 360& + q * (g - B)
+      If g < b Then
+        RGBToHSL201.hue = 360& + q * (g - b)
       Else
-        RGBToHSL201.hue = q * (g - B)
+        RGBToHSL201.hue = q * (g - b)
       End If
     Case g
-      RGBToHSL201.hue = 120& + q * (B - R)
-    Case B
+      RGBToHSL201.hue = 120& + q * (b - R)
+    Case b
       RGBToHSL201.hue = 240& + q * (R - g)
     End Select
   End If
@@ -3626,9 +3626,9 @@ End Function
 '==============================================================================
 'guid 함수에서 콜한다.
 '==============================================================================
-Function num2antilog_char(ByVal C As Long) As String
+Function num2antilog_char(ByVal c As Long) As String
     Dim val As String
-    Select Case C
+    Select Case c
         Case 0: val = "0"
         Case 1: val = "1"
         Case 2: val = "2"
@@ -3994,7 +3994,8 @@ calForgetColor = rgb(R, g, 0)
 
 End Function
 
-Function calForgetcolor2(ByVal oCnt As Integer, ByVal XCnt As Integer, ByVal update_ymd As String, ByVal reserve_ymd As String, ByVal dayFactor As Integer) As Double
+'Function calForgetcolor2(ByVal oCnt As Long, ByVal XCnt As Long, ByVal update_ymd As String, ByVal reserve_ymd As String, ByVal dayFactor As Long) As Double
+Function calForgetcolor2(ByVal oCnt As Long, ByVal XCnt As Long, ByVal update_ymd As String, ByVal reserve_ymd As String) As Double
 Dim dt1 As Date
 Dim dt2 As Date
 Dim dtToday As Date
@@ -4583,7 +4584,7 @@ Public Function BlueFromRGB(ByVal rgb As Long) _
 End Function
 
 Function Decode(str As String) As String
-Dim C As String
+Dim c As String
 Dim i As Long, j As Long
 Dim arr() As Byte
 Dim L As Long
@@ -4595,20 +4596,20 @@ End If
 L = Len(str) - 1
 For i = 0 To L
     ReDim Preserve arr(0 To j)
-    C = Mid(str, i + 1, 1)
-    If (C = "%") Then
+    c = Mid(str, i + 1, 1)
+    If (c = "%") Then
         i = i + 1
-        C = Mid(str, i + 1, 2)
+        c = Mid(str, i + 1, 2)
         i = i + 1
-        arr(j) = CByte("&H" & C)
+        arr(j) = CByte("&H" & c)
     Else
         On Error Resume Next
-        arr(j) = CByte(Asc(C))
+        arr(j) = CByte(Asc(c))
         
         If err.Number = 0 Then
         ElseIf err.Number = 6 Then
             
-            MsgBox "디코드 할 수 있는 문자가 잘못되었습니다.[" + C + "]문자", vbExclamation
+            MsgBox "디코드 할 수 있는 문자가 잘못되었습니다.[" + c + "]문자", vbExclamation
             err.Clear
             Exit Function
         Else
@@ -4629,7 +4630,7 @@ End Function
 
 
 Function Encode(str As String) As String
-Dim C As String
+Dim c As String
 Dim i As Long, j As Long
 Dim arr() As Byte
 Dim L As Long
@@ -4640,16 +4641,16 @@ End If
 
 L = Len(str) - 1
 For i = 0 To L
-    C = Hex(Asc(Mid(str, i + 1, 1)))
+    c = Hex(Asc(Mid(str, i + 1, 1)))
     
-    If Len(C) = 1 Then
-        Encode = Encode + "%0" + C
-    ElseIf Len(C) = 2 Then
-        Encode = Encode + "%" + C
-    ElseIf Len(C) = 3 Then
-        Encode = Encode + "%0" + Mid(C, 1, 1) + "%" + Mid(C, 2, 2)
-    ElseIf Len(C) = 4 Then
-        Encode = Encode + "%" + Mid(C, 1, 2) + "%" + Mid(C, 3, 2)
+    If Len(c) = 1 Then
+        Encode = Encode + "%0" + c
+    ElseIf Len(c) = 2 Then
+        Encode = Encode + "%" + c
+    ElseIf Len(c) = 3 Then
+        Encode = Encode + "%0" + Mid(c, 1, 1) + "%" + Mid(c, 2, 2)
+    ElseIf Len(c) = 4 Then
+        Encode = Encode + "%" + Mid(c, 1, 2) + "%" + Mid(c, 3, 2)
     Else
         MsgBox ("test?")
     End If
@@ -4891,13 +4892,13 @@ Private Function CRC(ByVal S As String, ByVal IsCRC32 As Boolean) As String
    End Select
 End Function
 
-Private Sub CRCUpdate(ByRef CRC, ByVal B As Byte)
+Private Sub CRCUpdate(ByRef CRC, ByVal b As Byte)
    ' Note no type declaration for CRC, as a long or integer can be passed.
    Const Polynomial16 As Integer = &HA001
    Const Polynomial32 As Long = &HEDB88320
    Dim bits As Byte
    
-   CRC = CRC Xor B
+   CRC = CRC Xor b
    For bits = 0 To 7
       Select Case (CRC And &H1) ' test LSB
             Case 0
@@ -4935,16 +4936,16 @@ End Function
 ' string to byte array
 Private Function UnicodeStringToBytes(ByVal str As String) As Byte()
     
-    Dim B() As Byte
+    Dim b() As Byte
     
-    ReDim B(1 To Len(str))
+    ReDim b(1 To Len(str))
     Dim i As Long
     
     For i = 1 To Len(str)
-        B(i) = Asc(Mid(str, i, 1))
-        Debug.Print B(i)
+        b(i) = Asc(Mid(str, i, 1))
+        Debug.Print b(i)
     Next
-    UnicodeStringToBytes = B
+    UnicodeStringToBytes = b
 End Function
 
 Public Function toclipboard(txt)

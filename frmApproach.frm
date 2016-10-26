@@ -7,7 +7,7 @@ Begin VB.Form frmApproach
    BorderStyle     =   0  'None
    ClientHeight    =   6375
    ClientLeft      =   120
-   ClientTop       =   480
+   ClientTop       =   405
    ClientWidth     =   12735
    ControlBox      =   0   'False
    Icon            =   "frmApproach.frx":0000
@@ -217,7 +217,7 @@ Begin VB.Form frmApproach
          _ExtentX        =   503
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   104792065
+         Format          =   87883777
          CurrentDate     =   38188
       End
       Begin MSComCtl2.DTPicker dtp2 
@@ -229,7 +229,7 @@ Begin VB.Form frmApproach
          _ExtentX        =   503
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   104792065
+         Format          =   87883777
          CurrentDate     =   38188
       End
       Begin VB.Label Label7 
@@ -592,6 +592,8 @@ End Sub
 Private Sub cmdSearch_Click()
 Dim userid_brace As String
 Dim subj_brace As String
+
+lastSelectIDX = 0
 
 '항목을 미정산 금액으로 해야 하겠다.
 

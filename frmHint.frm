@@ -758,7 +758,7 @@ End Sub
 
 
 
-Private Sub Form_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 
 If (Button And vbLeftButton) Then
     bonDraw = True
@@ -768,7 +768,7 @@ If (Button And vbLeftButton) Then
     
     PicMainDrawModeForeColor
     
-    Me.Line (X, Y)-(X, Y)
+    Me.Line (x, y)-(x, y)
 Else
     Me.PopupMenu mnuPop1
 End If
@@ -800,7 +800,7 @@ End Function
 
 
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Static preX As Single
 Static preY As Single
 
@@ -810,22 +810,22 @@ Dim Dist As Single
 If bonDraw Then
     
     If preX = 0 And preY = 0 Then
-        preX = X
-        preY = Y
+        preX = x
+        preY = y
         Exit Sub
     End If
-    Dist = ((X - preX) ^ 2 + (Y - preY) ^ 2) ^ 0.5 '[twip]
+    Dist = ((x - preX) ^ 2 + (y - preY) ^ 2) ^ 0.5 '[twip]
     
     If Dist > Me.DrawWidth * Screen.TwipsPerPixelX Then
     
-        Me.Line -(X, Y)
-        preX = X
-        preY = Y
+        Me.Line -(x, y)
+        preX = x
+        preY = y
     End If
 End If
 End Sub
 
-Private Sub Form_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 bonDraw = False
 Me.DrawMode = 13
 End Sub

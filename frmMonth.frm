@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{6B787742-7A47-11D3-9441-50AC0EC10000}#1.0#0"; "ctmonth.ocx"
 Begin VB.Form frmMonth 
-   BorderStyle     =   0  '없음
+   BorderStyle     =   0  'None
    Caption         =   "Form1"
    ClientHeight    =   8520
    ClientLeft      =   0
@@ -14,7 +14,7 @@ Begin VB.Form frmMonth
    ScaleHeight     =   8520
    ScaleWidth      =   11595
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   3  'Windows 기본값
+   StartUpPosition =   3  'Windows Default
    Tag             =   "FORM"
    Begin VB.Frame Frame1 
       Height          =   780
@@ -91,7 +91,7 @@ Begin VB.Form frmMonth
       TitleTextColor  =   4210688
       HeaderBackColor =   13434828
       MaskColor       =   12632256
-      Date            =   39498
+      Date            =   42651
       TitleType       =   1
       TitleSize       =   1
       HeaderBorder    =   1
@@ -99,9 +99,9 @@ Begin VB.Form frmMonth
       DatePosition    =   0
       WeekNumAlign    =   0
       PrintMapMode    =   0
-      Day             =   22
-      Month           =   2
-      Year            =   2008
+      Day             =   10
+      Month           =   10
+      Year            =   2016
       DateXOffset     =   -3
       DateYOffset     =   2
       KeyboardScan    =   0   'False
@@ -287,12 +287,12 @@ ctMonth1.Left = (Me.Width - ctMonth1.Width) / 2
 ctMonth1.Top = (Me.Height - ctMonth1.Height) / 2
 End Sub
 
-Private Function disp(Y As Integer, m As Integer)
+Private Function disp(y As Integer, M As Integer)
 
 'Debug.Assert False
 
-nYear = Y
-nMonth = m
+nYear = y
+nMonth = M
 
 
 startDate = nYear & Right("0" & nMonth, 2) & "01"

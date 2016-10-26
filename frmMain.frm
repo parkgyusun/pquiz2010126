@@ -214,7 +214,7 @@ Begin VB.Form frmMain
             Style           =   5
             Alignment       =   1
             AutoSize        =   2
-            TextSave        =   "오전 12:23"
+            TextSave        =   "오후 10:12"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
@@ -222,7 +222,7 @@ Begin VB.Form frmMain
             AutoSize        =   2
             Object.Width           =   1588
             MinWidth        =   1305
-            TextSave        =   "오전 12:23"
+            TextSave        =   "오후 10:12"
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Alignment       =   1
@@ -811,13 +811,9 @@ Dim frmMsgBox As frmMsgBox60sec
 'Private WithEvents MyAgent As AgentObjectsCtl.Agent
 #End If
 
-
 Private Sub Command1_Click()
 
 End Sub
-
-
-
 
 Private Sub Form_GotFocus()
 
@@ -1041,7 +1037,7 @@ Private Sub Form_Resize()
 End Sub
 
 
-Private Sub imgSplitter_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgSplitter_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 gMainOnResize = True
 'With imgSplitter
         picSplitter.Move imgSplitter.Left, imgSplitter.Top, 60, imgSplitter.Height - 20
@@ -1052,12 +1048,12 @@ gMainOnResize = True
 End Sub
 
 
-Private Sub imgSplitter_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgSplitter_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
     Dim sglPos As Single
     
 
     If mbMoving Then
-        sglPos = X + imgSplitter.Left - 25
+        sglPos = x + imgSplitter.Left - 25
         If sglPos < sglSplitLimit Then
             picSplitter.Left = sglSplitLimit
         ElseIf sglPos > Me.Width - sglSplitLimit - 1500 Then
@@ -1069,7 +1065,7 @@ Private Sub imgSplitter_MouseMove(Button As Integer, Shift As Integer, X As Sing
 End Sub
 
 
-Private Sub imgSplitter_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgSplitter_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     SizeControls picSplitter.Left + 25
     picSplitter.Visible = False
     mbMoving = False
@@ -1077,25 +1073,25 @@ Private Sub imgSplitter_MouseUp(Button As Integer, Shift As Integer, X As Single
 End Sub
 
 
-Private Sub TreeView1_DragDrop(Source As Control, X As Single, Y As Single)
+Private Sub TreeView1_DragDrop(Source As Control, x As Single, y As Single)
     If Source = imgSplitter Then
-        SizeControls X
+        SizeControls x
     End If
 End Sub
 
 
-Sub SizeControls(X As Single)
+Sub SizeControls(x As Single)
     On Error Resume Next
     
 
     '너비를 설정합니다.
-    If X < 50 Then
-        X = 50
+    If x < 50 Then
+        x = 50
     End If
-    If X > (Me.Width - 1500) Then X = Me.Width - 1500
-    tvTreeView.Width = X
-    imgSplitter.Left = X - 50
-    lvListView.Left = X + 30
+    If x > (Me.Width - 1500) Then x = Me.Width - 1500
+    tvTreeView.Width = x
+    imgSplitter.Left = x - 50
+    lvListView.Left = x + 30
     lvListView.Width = Me.Width - (tvTreeView.Width + 140)
     lblTitle(0).Width = tvTreeView.Width
     lblTitle(1).Left = lvListView.Left + 20
@@ -2916,7 +2912,7 @@ End If
 End Sub
 
 
-Private Sub tvTreeView_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub tvTreeView_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 On Error Resume Next
 Dim str As String
 str = tvTreeView.SelectedItem.key
